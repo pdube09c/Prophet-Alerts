@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Betting Alerts — Selection</title>
+<style>
+  :root {
+    --bg: #0f1216; --card: #1a1f26; --line: #2a313b; --fg: #e8edf2;
+    --muted: #8b97a6; --accent: #4ea1ff; --good: #37c978; --warn: #f0b429;
+    --danger: #ef5350;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font: 15px/1.45 -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+    background: var(--bg); color: var(--fg); padding: 16px; max-width: 640px;
+    margin-inline: auto;
+  }
+  header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  h1 { font-size: 19px; margin: 0; }
+  .stage {
+    font-size: 11px; font-weight: 700; letter-spacing: .5px; padding: 2px 8px;
+    border-radius: 999px; background: var(--warn); color: #1a1f26;
+  }
+  .note { color: var(--muted); font-size: 12px; margin: 4px 0 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px; margin-bottom: 12px;
+  }
+  .fav { font-size: 17px; font-weight: 700; }
+  .ml { color: var(--accent); }
+  .row { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px;
+    color: var(--muted); font-size: 13px; }
+  .row b { color: var(--fg); font-weight: 600; }
+  .controls { display: flex; gap: 8px; align-items: center; margin-top: 12px; }
+  label.stk { color: var(--muted); font-size: 13px; }
+  input[type=number] {
+    width: 110px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line);
+    background: #0f1216; color: var(--fg); font-size: 15px;
+  }
+  button {
+    margin-left: auto; padding: 9px 14px; border-radius: 8px; border: 0;
+    background: var(--accent); color: #06101c; font-weight: 700; font-size: 14px;
+    cursor: pointer;
+  }
+  button:disabled { opacity: .5; cursor: default; }
+  .logged { color: var(--good); font-weight: 700; }
+  .err { color: var(--danger); }
+  .empty { color: var(--muted); text-align: center; padding: 32px 0; }
+  footer { color: var(--muted); font-size: 11px; margin-top: 20px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Survivors</h1>
+  <span class="stage" id="stage">PAPER</span>
+</header>
+<p class="note">
+  This app never places bets. Pick a stake and log what you actually did on
+  ProphetX. Prices shown are from the last alert — confirm live before betting.
+</p>
+<div id="list"><p class="empty">Loading…</p></div>
+<footer id="foot"></footer>
+
+<script src="config.js"></script>
+<script>
+const CFG = window.APP_CONFIG || {};
+const listEl = document.getElementById("list");
+const footEl = document.getElementById("foot");
+
+document.getElementById("stage").textContent = (CFG.STAGE || "paper").toUpperCase();
+
+function rest(path, opts = {}) {
+  const headers = Object.assign({
+    apikey: CFG.SUPABASE_ANON_KEY,
+    Authorization: "Bearer " + CFG.SUPABASE_ANON_KEY,
+    "Content-Type": "application/json",
+  }, opts.headers || {});
+  return fetch(CFG.SUPABASE_URL.replace(/\/$/, "") + "/rest/v1/" + path,
+               Object.assign({}, opts, { headers }));
+}
+
+function fmtMl(ml) { return ml > 0 ? "+" + ml : String(ml); }
+function fmtTip(iso) {
+  try { return new Date(iso).toLocaleString(); } catch { return iso; }
+}
+function uuid() {
+  return (crypto.randomUUID && crypto.randomUUID()) ||
+    "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
+      const r = Math.random() * 16 | 0;
+      return (c === "x" ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+
+function card(s) {
+  const el = document.createElement("div");
+  el.className = "card";
+  const defStake = (CFG.STAGE === "stage1") ? 100 : (CFG.STAGE === "paper" ? 0 : "");
+  const liq = (s.liquidity != null) ? "$" + Number(s.liquidity).toLocaleString() : "n/a";
+  el.innerHTML = `
+    <div class="fav">${s.favorite} <span class="ml">${fmtMl(s.entry_ml)}</span></div>
+    <div class="row"><span>Underdog</span><b>${s.dog}</b></div>
+    <div class="row"><span>Tip</span><b>${fmtTip(s.tip_time)}</b></div>
+    <div class="row"><span>Liquidity</span><b>${liq}</b></div>
+    <div class="controls">
+      <label class="stk">Stake $</label>
+      <input type="number" min="0" step="1" value="${defStake}">
+      <button>Log</button>
+    </div>
+    <div class="row status"></div>`;
+  const input = el.querySelector("input");
+  const btn = el.querySelector("button");
+  const status = el.querySelector(".status");
+  btn.addEventListener("click", async () => {
+    btn.disabled = true; status.textContent = "Saving…"; status.className = "row status";
+    const stake = Number(input.value || 0);
+    const bet = {
+      id: uuid(), sport: s.sport, game_date: s.game_date,
+      favorite: s.favorite, dog: s.dog, entry_ml: s.entry_ml,
+      liquidity: s.liquidity, stake_chosen: stake,
+      entry_time_actual: new Date().toISOString(), placed: stake > 0,
+    };
+    try {
+      const r = await rest("bets", { method: "POST", body: JSON.stringify(bet),
+        headers: { Prefer: "return=minimal" } });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      status.innerHTML = `<span class="logged">Logged ${stake > 0 ?
+        "$" + stake + " placed" : "as no-bet"}.</span>`;
+    } catch (e) {
+      status.innerHTML = `<span class="err">Failed: ${e.message}. Retry.</span>`;
+      btn.disabled = false;
+    }
+  });
+  return el;
+}
+
+async function load() {
+  if (!CFG.SUPABASE_URL || !CFG.SUPABASE_ANON_KEY) {
+    listEl.innerHTML = `<p class="empty err">Config missing. Copy
+      web/config.example.js to web/config.js and fill in the anon key + URL.</p>`;
+    return;
+  }
+  try {
+    const r = await rest("survivors?sport=eq.nba&order=tip_time.asc");
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const rows = await r.json();
+    const now = Date.now();
+    const upcoming = rows.filter(s => new Date(s.tip_time).getTime() > now - 3 * 3600e3);
+    listEl.innerHTML = "";
+    if (!upcoming.length) {
+      listEl.innerHTML = `<p class="empty">No current survivors.</p>`;
+    } else {
+      upcoming.forEach(s => listEl.appendChild(card(s)));
+    }
+    footEl.textContent = `${upcoming.length} survivor(s) · updated ${new Date().toLocaleTimeString()}`;
+  } catch (e) {
+    listEl.innerHTML = `<p class="empty err">Could not load survivors: ${e.message}</p>`;
+  }
+}
+
+load();
+</script>
+</body>
+</html>

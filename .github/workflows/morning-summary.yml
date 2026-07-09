@@ -1,0 +1,36 @@
+# Morning settle + summary (Design B §12.6 / §12.7).
+#
+# Each morning: grade yesterday's logged bets and record how the vetoed games
+# turned out (settle.py), then email the record + P&L + veto audit (summary.py).
+# Runs at UTC 14:00 (ET ~09:00), after all prior-night games are final.
+name: morning-summary
+on:
+  schedule:
+    - cron: "0 14 * * *"        # UTC 14:00  (ET 09:00 EST / 10:00 EDT)
+  workflow_dispatch: {}
+
+jobs:
+  morning-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: settle yesterday's bets
+        env:
+          ODDSAPIKEY: ${{ secrets.ODDSAPIKEY }}
+          SUPABASEURL: ${{ secrets.SUPABASEURL }}
+          SUPABASEKEY: ${{ secrets.SUPABASEKEY }}
+        run: python -m engine.settle
+      - name: email the summary
+        env:
+          SUPABASEURL: ${{ secrets.SUPABASEURL }}
+          SUPABASEKEY: ${{ secrets.SUPABASEKEY }}
+          EMAILAPIKEY: ${{ secrets.EMAILAPIKEY }}
+          STAGE: ${{ vars.STAGE }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          EMAIL_TO: ${{ vars.EMAIL_TO }}
+        run: python -m engine.summary

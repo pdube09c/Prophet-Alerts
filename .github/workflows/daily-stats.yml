@@ -1,0 +1,36 @@
+# Daily point-in-time stats pull (Design B §12.6 / §12.7).
+#
+# Once a day, before the slate, pull each team's stats as of D-1 (no lookahead)
+# and upsert them into the `stats` table so the tick never touches nba_api. Runs
+# at UTC 16:00 (ET ~11:00–12:00), comfortably before first tip.
+name: daily-stats
+on:
+  schedule:
+    - cron: "0 16 * * *"        # UTC 16:00  (ET 11:00 EST / 12:00 EDT)
+  workflow_dispatch:
+    inputs:
+      asof_date:
+        description: "Override as-of date (YYYY-MM-DD); default = yesterday ET"
+        required: false
+
+jobs:
+  daily-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: pull PIT stats
+        env:
+          SUPABASEURL: ${{ secrets.SUPABASEURL }}
+          SUPABASEKEY: ${{ secrets.SUPABASEKEY }}
+          ASOF_DATE: ${{ github.event.inputs.asof_date }}
+        run: |
+          if [ -n "$ASOF_DATE" ]; then
+            python -c "import json; from engine.daily_stats import run; print(json.dumps(run(asof_date='$ASOF_DATE')))"
+          else
+            python -m engine.daily_stats
+          fi

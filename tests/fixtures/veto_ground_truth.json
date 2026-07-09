@@ -1,0 +1,8175 @@
+{
+"config": "bgpf",
+"layers": [
+"book",
+"grinder",
+"pace/TOV",
+"FT/def"
+],
+"candidates": [
+{
+"date": "2025-11-01",
+"fav": "Houston Rockets",
+"dog": "Boston Celtics",
+"ml": -182,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-01",
+"fav": "Detroit Pistons",
+"dog": "Dallas Mavericks",
+"ml": -275,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-02",
+"fav": "Philadelphia 76ers",
+"dog": "Brooklyn Nets",
+"ml": -188,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-02",
+"fav": "New York Knicks",
+"dog": "Chicago Bulls",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-03",
+"fav": "Minnesota Timberwolves",
+"dog": "Brooklyn Nets",
+"ml": -330,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-03",
+"fav": "Portland Trail Blazers",
+"dog": "Los Angeles Lakers",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-03",
+"fav": "Los Angeles Clippers",
+"dog": "Miami Heat",
+"ml": -280,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-04",
+"fav": "New Orleans Pelicans",
+"dog": "Charlotte Hornets",
+"ml": -142,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-04",
+"fav": "Oklahoma City Thunder",
+"dog": "Los Angeles Clippers",
+"ml": -285,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-05",
+"fav": "Indiana Pacers",
+"dog": "Brooklyn Nets",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-05",
+"fav": "Houston Rockets",
+"dog": "Memphis Grizzlies",
+"ml": -300,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-05",
+"fav": "Sacramento Kings",
+"dog": "Golden State Warriors",
+"ml": -132,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-08",
+"fav": "Dallas Mavericks",
+"dog": "Washington Wizards",
+"ml": -198,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-08",
+"fav": "Philadelphia 76ers",
+"dog": "Toronto Raptors",
+"ml": -182,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-08",
+"fav": "Cleveland Cavaliers",
+"dog": "Chicago Bulls",
+"ml": -310,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-08",
+"fav": "Los Angeles Clippers",
+"dog": "Phoenix Suns",
+"ml": -186,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-09",
+"fav": "Houston Rockets",
+"dog": "Milwaukee Bucks",
+"ml": -166,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-09",
+"fav": "Detroit Pistons",
+"dog": "Philadelphia 76ers",
+"ml": -166,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-10",
+"fav": "Los Angeles Lakers",
+"dog": "Charlotte Hornets",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-10",
+"fav": "San Antonio Spurs",
+"dog": "Chicago Bulls",
+"ml": -160,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-10",
+"fav": "Phoenix Suns",
+"dog": "New Orleans Pelicans",
+"ml": -325,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-10",
+"fav": "Minnesota Timberwolves",
+"dog": "Utah Jazz",
+"ml": -285,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-11",
+"fav": "Oklahoma City Thunder",
+"dog": "Golden State Warriors",
+"ml": -280,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-11",
+"fav": "Indiana Pacers",
+"dog": "Utah Jazz",
+"ml": -132,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-12",
+"fav": "Boston Celtics",
+"dog": "Memphis Grizzlies",
+"ml": -270,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-12",
+"fav": "Portland Trail Blazers",
+"dog": "New Orleans Pelicans",
+"ml": -300,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-12",
+"fav": "Atlanta Hawks",
+"dog": "Sacramento Kings",
+"ml": -168,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-13",
+"fav": "Phoenix Suns",
+"dog": "Indiana Pacers",
+"ml": -162,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-13",
+"fav": "Atlanta Hawks",
+"dog": "Utah Jazz",
+"ml": -117,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-14",
+"fav": "New York Knicks",
+"dog": "Miami Heat",
+"ml": -225,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-16",
+"fav": "Boston Celtics",
+"dog": "Los Angeles Clippers",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-16",
+"fav": "San Antonio Spurs",
+"dog": "Sacramento Kings",
+"ml": -330,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-16",
+"fav": "Chicago Bulls",
+"dog": "Utah Jazz",
+"ml": -174,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-17",
+"fav": "Philadelphia 76ers",
+"dog": "Los Angeles Clippers",
+"ml": -186,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-17",
+"fav": "Toronto Raptors",
+"dog": "Charlotte Hornets",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-18",
+"fav": "San Antonio Spurs",
+"dog": "Memphis Grizzlies",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-19",
+"fav": "Chicago Bulls",
+"dog": "Portland Trail Blazers",
+"ml": -160,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-20",
+"fav": "Orlando Magic",
+"dog": "Los Angeles Clippers",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-20",
+"fav": "Philadelphia 76ers",
+"dog": "Milwaukee Bucks",
+"ml": -112,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-20",
+"fav": "San Antonio Spurs",
+"dog": "Atlanta Hawks",
+"ml": -105,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-21",
+"fav": "Minnesota Timberwolves",
+"dog": "Phoenix Suns",
+"ml": -170,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-23",
+"fav": "Philadelphia 76ers",
+"dog": "Miami Heat",
+"ml": -102,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-23",
+"fav": "Atlanta Hawks",
+"dog": "Charlotte Hornets",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-23",
+"fav": "Phoenix Suns",
+"dog": "San Antonio Spurs",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-24",
+"fav": "Chicago Bulls",
+"dog": "New Orleans Pelicans",
+"ml": -198,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-24",
+"fav": "Denver Nuggets",
+"dog": "Memphis Grizzlies",
+"ml": -310,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-24",
+"fav": "Houston Rockets",
+"dog": "Phoenix Suns",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-25",
+"fav": "Los Angeles Lakers",
+"dog": "Los Angeles Clippers",
+"ml": -255,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-26",
+"fav": "New York Knicks",
+"dog": "Charlotte Hornets",
+"ml": -245,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-26",
+"fav": "Phoenix Suns",
+"dog": "Sacramento Kings",
+"ml": -168,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-28",
+"fav": "Philadelphia 76ers",
+"dog": "Brooklyn Nets",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-28",
+"fav": "Indiana Pacers",
+"dog": "Washington Wizards",
+"ml": -255,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-30",
+"fav": "Philadelphia 76ers",
+"dog": "Atlanta Hawks",
+"ml": -120,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-01",
+"fav": "Charlotte Hornets",
+"dog": "Brooklyn Nets",
+"ml": -170,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-01",
+"fav": "Miami Heat",
+"dog": "Los Angeles Clippers",
+"ml": -240,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-02",
+"fav": "Toronto Raptors",
+"dog": "Portland Trail Blazers",
+"ml": -198,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-02",
+"fav": "San Antonio Spurs",
+"dog": "Memphis Grizzlies",
+"ml": -188,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-03",
+"fav": "Denver Nuggets",
+"dog": "Indiana Pacers",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-03",
+"fav": "Chicago Bulls",
+"dog": "Brooklyn Nets",
+"ml": -300,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-04",
+"fav": "Utah Jazz",
+"dog": "Brooklyn Nets",
+"ml": -184,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-05",
+"fav": "Detroit Pistons",
+"dog": "Portland Trail Blazers",
+"ml": -285,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-05",
+"fav": "Los Angeles Clippers",
+"dog": "Memphis Grizzlies",
+"ml": -119,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-06",
+"fav": "Brooklyn Nets",
+"dog": "New Orleans Pelicans",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-06",
+"fav": "Cleveland Cavaliers",
+"dog": "Golden State Warriors",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-07",
+"fav": "Memphis Grizzlies",
+"dog": "Portland Trail Blazers",
+"ml": -114,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-07",
+"fav": "Golden State Warriors",
+"dog": "Chicago Bulls",
+"ml": -110,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-07",
+"fav": "Los Angeles Lakers",
+"dog": "Philadelphia 76ers",
+"ml": -162,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-12",
+"fav": "Chicago Bulls",
+"dog": "Charlotte Hornets",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-12",
+"fav": "Philadelphia 76ers",
+"dog": "Indiana Pacers",
+"ml": -265,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-12",
+"fav": "Memphis Grizzlies",
+"dog": "Utah Jazz",
+"ml": -240,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-14",
+"fav": "Milwaukee Bucks",
+"dog": "Brooklyn Nets",
+"ml": -117,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-14",
+"fav": "Golden State Warriors",
+"dog": "Portland Trail Blazers",
+"ml": -186,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-16",
+"fav": "New York Knicks",
+"dog": "San Antonio Spurs",
+"ml": -130,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-17",
+"fav": "Minnesota Timberwolves",
+"dog": "Memphis Grizzlies",
+"ml": -270,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-18",
+"fav": "Atlanta Hawks",
+"dog": "Charlotte Hornets",
+"ml": -192,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-18",
+"fav": "New York Knicks",
+"dog": "Indiana Pacers",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-18",
+"fav": "Los Angeles Lakers",
+"dog": "Utah Jazz",
+"ml": -350,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-19",
+"fav": "Boston Celtics",
+"dog": "Miami Heat",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-19",
+"fav": "San Antonio Spurs",
+"dog": "Atlanta Hawks",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-20",
+"fav": "Golden State Warriors",
+"dog": "Phoenix Suns",
+"ml": -215,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-20",
+"fav": "Orlando Magic",
+"dog": "Utah Jazz",
+"ml": -275,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-22",
+"fav": "Cleveland Cavaliers",
+"dog": "Charlotte Hornets",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-22",
+"fav": "Detroit Pistons",
+"dog": "Portland Trail Blazers",
+"ml": -220,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-23",
+"fav": "Charlotte Hornets",
+"dog": "Washington Wizards",
+"ml": -225,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-23",
+"fav": "Milwaukee Bucks",
+"dog": "Indiana Pacers",
+"ml": -112,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-23",
+"fav": "Minnesota Timberwolves",
+"dog": "New York Knicks",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-23",
+"fav": "Memphis Grizzlies",
+"dog": "Utah Jazz",
+"ml": -154,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-23",
+"fav": "Orlando Magic",
+"dog": "Portland Trail Blazers",
+"ml": -111,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-23",
+"fav": "Houston Rockets",
+"dog": "Los Angeles Clippers",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-25",
+"fav": "New York Knicks",
+"dog": "Cleveland Cavaliers",
+"ml": -192,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-26",
+"fav": "Boston Celtics",
+"dog": "Indiana Pacers",
+"ml": -300,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-26",
+"fav": "Phoenix Suns",
+"dog": "New Orleans Pelicans",
+"ml": -176,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-26",
+"fav": "Memphis Grizzlies",
+"dog": "Milwaukee Bucks",
+"ml": -162,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-26",
+"fav": "Los Angeles Clippers",
+"dog": "Portland Trail Blazers",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-27",
+"fav": "New York Knicks",
+"dog": "Atlanta Hawks",
+"ml": -200,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-28",
+"fav": "Boston Celtics",
+"dog": "Portland Trail Blazers",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-28",
+"fav": "Detroit Pistons",
+"dog": "Los Angeles Clippers",
+"ml": -142,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-29",
+"fav": "Milwaukee Bucks",
+"dog": "Charlotte Hornets",
+"ml": -142,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-29",
+"fav": "Minnesota Timberwolves",
+"dog": "Chicago Bulls",
+"ml": -194,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-30",
+"fav": "Boston Celtics",
+"dog": "Utah Jazz",
+"ml": -265,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-31",
+"fav": "Golden State Warriors",
+"dog": "Charlotte Hornets",
+"ml": -245,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-31",
+"fav": "Orlando Magic",
+"dog": "Indiana Pacers",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-31",
+"fav": "Minnesota Timberwolves",
+"dog": "Atlanta Hawks",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-12-31",
+"fav": "San Antonio Spurs",
+"dog": "New York Knicks",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-02",
+"fav": "San Antonio Spurs",
+"dog": "Indiana Pacers",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-02",
+"fav": "Milwaukee Bucks",
+"dog": "Charlotte Hornets",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-03",
+"fav": "Minnesota Timberwolves",
+"dog": "Miami Heat",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-03",
+"fav": "Toronto Raptors",
+"dog": "Atlanta Hawks",
+"ml": -168,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-04",
+"fav": "Oklahoma City Thunder",
+"dog": "Phoenix Suns",
+"ml": -340,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-04",
+"fav": "Milwaukee Bucks",
+"dog": "Sacramento Kings",
+"ml": -215,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-05",
+"fav": "Houston Rockets",
+"dog": "Phoenix Suns",
+"ml": -275,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-05",
+"fav": "Portland Trail Blazers",
+"dog": "Utah Jazz",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-06",
+"fav": "Los Angeles Lakers",
+"dog": "New Orleans Pelicans",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-08",
+"fav": "Charlotte Hornets",
+"dog": "Indiana Pacers",
+"ml": -166,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-09",
+"fav": "New Orleans Pelicans",
+"dog": "Washington Wizards",
+"ml": -130,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-09",
+"fav": "Los Angeles Clippers",
+"dog": "Brooklyn Nets",
+"ml": -176,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-09",
+"fav": "Oklahoma City Thunder",
+"dog": "Memphis Grizzlies",
+"ml": -198,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-09",
+"fav": "New York Knicks",
+"dog": "Phoenix Suns",
+"ml": -108,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-09",
+"fav": "Houston Rockets",
+"dog": "Portland Trail Blazers",
+"ml": -225,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-09",
+"fav": "Los Angeles Lakers",
+"dog": "Milwaukee Bucks",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-10",
+"fav": "Chicago Bulls",
+"dog": "Dallas Mavericks",
+"ml": -132,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-10",
+"fav": "Charlotte Hornets",
+"dog": "Utah Jazz",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-11",
+"fav": "Orlando Magic",
+"dog": "New Orleans Pelicans",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-11",
+"fav": "Memphis Grizzlies",
+"dog": "Brooklyn Nets",
+"ml": -245,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-11",
+"fav": "New York Knicks",
+"dog": "Portland Trail Blazers",
+"ml": -192,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-11",
+"fav": "Golden State Warriors",
+"dog": "Atlanta Hawks",
+"ml": -215,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-12",
+"fav": "Philadelphia 76ers",
+"dog": "Toronto Raptors",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-12",
+"fav": "Dallas Mavericks",
+"dog": "Brooklyn Nets",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-12",
+"fav": "Los Angeles Lakers",
+"dog": "Sacramento Kings",
+"ml": -325,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-14",
+"fav": "Philadelphia 76ers",
+"dog": "Cleveland Cavaliers",
+"ml": -101,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-14",
+"fav": "Chicago Bulls",
+"dog": "Utah Jazz",
+"ml": -174,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-15",
+"fav": "Orlando Magic",
+"dog": "Memphis Grizzlies",
+"ml": -196,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-15",
+"fav": "Boston Celtics",
+"dog": "Miami Heat",
+"ml": -136,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-15",
+"fav": "San Antonio Spurs",
+"dog": "Milwaukee Bucks",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-15",
+"fav": "Atlanta Hawks",
+"dog": "Portland Trail Blazers",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-16",
+"fav": "Philadelphia 76ers",
+"dog": "Cleveland Cavaliers",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-16",
+"fav": "Indiana Pacers",
+"dog": "New Orleans Pelicans",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-16",
+"fav": "Sacramento Kings",
+"dog": "Washington Wizards",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-17",
+"fav": "Golden State Warriors",
+"dog": "Charlotte Hornets",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-18",
+"fav": "Chicago Bulls",
+"dog": "Brooklyn Nets",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-18",
+"fav": "Sacramento Kings",
+"dog": "Portland Trail Blazers",
+"ml": -130,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-19",
+"fav": "Atlanta Hawks",
+"dog": "Milwaukee Bucks",
+"ml": -124,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-19",
+"fav": "Los Angeles Clippers",
+"dog": "Washington Wizards",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-19",
+"fav": "Phoenix Suns",
+"dog": "Brooklyn Nets",
+"ml": -330,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-20",
+"fav": "Chicago Bulls",
+"dog": "Los Angeles Clippers",
+"ml": -148,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-21",
+"fav": "Cleveland Cavaliers",
+"dog": "Charlotte Hornets",
+"ml": -142,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-21",
+"fav": "Toronto Raptors",
+"dog": "Sacramento Kings",
+"ml": -190,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-22",
+"fav": "Denver Nuggets",
+"dog": "Washington Wizards",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-22",
+"fav": "Golden State Warriors",
+"dog": "Dallas Mavericks",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-23",
+"fav": "Boston Celtics",
+"dog": "Brooklyn Nets",
+"ml": -300,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-23",
+"fav": "Phoenix Suns",
+"dog": "Atlanta Hawks",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-25",
+"fav": "Minnesota Timberwolves",
+"dog": "Golden State Warriors",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-25",
+"fav": "Phoenix Suns",
+"dog": "Miami Heat",
+"ml": -186,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-26",
+"fav": "Los Angeles Lakers",
+"dog": "Chicago Bulls",
+"ml": -112,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-27",
+"fav": "Philadelphia 76ers",
+"dog": "Milwaukee Bucks",
+"ml": -335,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-27",
+"fav": "Phoenix Suns",
+"dog": "Brooklyn Nets",
+"ml": -295,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-28",
+"fav": "Toronto Raptors",
+"dog": "New York Knicks",
+"ml": -158,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-29",
+"fav": "Detroit Pistons",
+"dog": "Phoenix Suns",
+"ml": -148,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-30",
+"fav": "Los Angeles Lakers",
+"dog": "Washington Wizards",
+"ml": -335,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-30",
+"fav": "New Orleans Pelicans",
+"dog": "Memphis Grizzlies",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-30",
+"fav": "New York Knicks",
+"dog": "Portland Trail Blazers",
+"ml": -275,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-01-31",
+"fav": "San Antonio Spurs",
+"dog": "Charlotte Hornets",
+"ml": -166,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-01",
+"fav": "Sacramento Kings",
+"dog": "Washington Wizards",
+"ml": -122,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-01",
+"fav": "Cleveland Cavaliers",
+"dog": "Portland Trail Blazers",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-02",
+"fav": "Charlotte Hornets",
+"dog": "New Orleans Pelicans",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-02",
+"fav": "Houston Rockets",
+"dog": "Indiana Pacers",
+"ml": -240,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-04",
+"fav": "New Orleans Pelicans",
+"dog": "Milwaukee Bucks",
+"ml": -188,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-04",
+"fav": "Cleveland Cavaliers",
+"dog": "Los Angeles Clippers",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-05",
+"fav": "Atlanta Hawks",
+"dog": "Utah Jazz",
+"ml": -305,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-05",
+"fav": "Houston Rockets",
+"dog": "Charlotte Hornets",
+"ml": -162,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-06",
+"fav": "Portland Trail Blazers",
+"dog": "Memphis Grizzlies",
+"ml": -295,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-06",
+"fav": "Los Angeles Clippers",
+"dog": "Sacramento Kings",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-07",
+"fav": "Brooklyn Nets",
+"dog": "Washington Wizards",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-07",
+"fav": "Charlotte Hornets",
+"dog": "Atlanta Hawks",
+"ml": -125,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-08",
+"fav": "Boston Celtics",
+"dog": "New York Knicks",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-08",
+"fav": "Toronto Raptors",
+"dog": "Indiana Pacers",
+"ml": -350,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-08",
+"fav": "Minnesota Timberwolves",
+"dog": "Los Angeles Clippers",
+"ml": -325,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-09",
+"fav": "Detroit Pistons",
+"dog": "Charlotte Hornets",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-09",
+"fav": "Chicago Bulls",
+"dog": "Brooklyn Nets",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-09",
+"fav": "New Orleans Pelicans",
+"dog": "Sacramento Kings",
+"ml": -345,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-09",
+"fav": "Philadelphia 76ers",
+"dog": "Portland Trail Blazers",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-10",
+"fav": "Houston Rockets",
+"dog": "Los Angeles Clippers",
+"ml": -295,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-11",
+"fav": "Brooklyn Nets",
+"dog": "Indiana Pacers",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-11",
+"fav": "Houston Rockets",
+"dog": "Los Angeles Clippers",
+"ml": -295,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-11",
+"fav": "Oklahoma City Thunder",
+"dog": "Phoenix Suns",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-11",
+"fav": "San Antonio Spurs",
+"dog": "Golden State Warriors",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-12",
+"fav": "Portland Trail Blazers",
+"dog": "Utah Jazz",
+"ml": -240,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-19",
+"fav": "Houston Rockets",
+"dog": "Charlotte Hornets",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-19",
+"fav": "Toronto Raptors",
+"dog": "Chicago Bulls",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-19",
+"fav": "San Antonio Spurs",
+"dog": "Phoenix Suns",
+"ml": -255,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-19",
+"fav": "Boston Celtics",
+"dog": "Golden State Warriors",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-19",
+"fav": "Denver Nuggets",
+"dog": "Los Angeles Clippers",
+"ml": -162,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-20",
+"fav": "Cleveland Cavaliers",
+"dog": "Charlotte Hornets",
+"ml": -194,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-20",
+"fav": "Los Angeles Lakers",
+"dog": "Los Angeles Clippers",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-21",
+"fav": "Philadelphia 76ers",
+"dog": "New Orleans Pelicans",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-22",
+"fav": "Toronto Raptors",
+"dog": "Milwaukee Bucks",
+"ml": -144,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-22",
+"fav": "Portland Trail Blazers",
+"dog": "Phoenix Suns",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-24",
+"fav": "Dallas Mavericks",
+"dog": "Brooklyn Nets",
+"ml": -112,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-24",
+"fav": "Miami Heat",
+"dog": "Milwaukee Bucks",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-24",
+"fav": "Minnesota Timberwolves",
+"dog": "Portland Trail Blazers",
+"ml": -225,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-25",
+"fav": "Golden State Warriors",
+"dog": "Memphis Grizzlies",
+"ml": -166,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-25",
+"fav": "Denver Nuggets",
+"dog": "Boston Celtics",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-26",
+"fav": "Philadelphia 76ers",
+"dog": "Miami Heat",
+"ml": -144,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-26",
+"fav": "Portland Trail Blazers",
+"dog": "Chicago Bulls",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-26",
+"fav": "Dallas Mavericks",
+"dog": "Sacramento Kings",
+"ml": -280,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-26",
+"fav": "Los Angeles Lakers",
+"dog": "Phoenix Suns",
+"ml": -194,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-26",
+"fav": "New Orleans Pelicans",
+"dog": "Utah Jazz",
+"ml": -215,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-26",
+"fav": "Minnesota Timberwolves",
+"dog": "Los Angeles Clippers",
+"ml": -275,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-27",
+"fav": "New York Knicks",
+"dog": "Milwaukee Bucks",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-28",
+"fav": "Los Angeles Lakers",
+"dog": "Golden State Warriors",
+"ml": -152,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-02-28",
+"fav": "New Orleans Pelicans",
+"dog": "Utah Jazz",
+"ml": -225,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-01",
+"fav": "Milwaukee Bucks",
+"dog": "Chicago Bulls",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-01",
+"fav": "Denver Nuggets",
+"dog": "Minnesota Timberwolves",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-01",
+"fav": "Atlanta Hawks",
+"dog": "Portland Trail Blazers",
+"ml": -194,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-01",
+"fav": "Boston Celtics",
+"dog": "Philadelphia 76ers",
+"ml": -335,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-01",
+"fav": "Los Angeles Clippers",
+"dog": "New Orleans Pelicans",
+"ml": -280,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-02",
+"fav": "Los Angeles Clippers",
+"dog": "Golden State Warriors",
+"ml": -113,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-03",
+"fav": "Detroit Pistons",
+"dog": "Cleveland Cavaliers",
+"ml": -136,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-03",
+"fav": "New York Knicks",
+"dog": "Toronto Raptors",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-04",
+"fav": "Boston Celtics",
+"dog": "Charlotte Hornets",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-05",
+"fav": "Washington Wizards",
+"dog": "Utah Jazz",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-08",
+"fav": "San Antonio Spurs",
+"dog": "Houston Rockets",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-08",
+"fav": "Orlando Magic",
+"dog": "Milwaukee Bucks",
+"ml": -192,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-08",
+"fav": "Charlotte Hornets",
+"dog": "Phoenix Suns",
+"ml": -176,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-09",
+"fav": "Memphis Grizzlies",
+"dog": "Brooklyn Nets",
+"ml": -109,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-09",
+"fav": "Golden State Warriors",
+"dog": "Utah Jazz",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-09",
+"fav": "New York Knicks",
+"dog": "Los Angeles Clippers",
+"ml": -122,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-10",
+"fav": "Golden State Warriors",
+"dog": "Chicago Bulls",
+"ml": -220,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-10",
+"fav": "Charlotte Hornets",
+"dog": "Portland Trail Blazers",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-12",
+"fav": "Phoenix Suns",
+"dog": "Indiana Pacers",
+"ml": -345,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-12",
+"fav": "Miami Heat",
+"dog": "Milwaukee Bucks",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-12",
+"fav": "Dallas Mavericks",
+"dog": "Memphis Grizzlies",
+"ml": -198,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-13",
+"fav": "Toronto Raptors",
+"dog": "Phoenix Suns",
+"ml": -184,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-13",
+"fav": "Houston Rockets",
+"dog": "New Orleans Pelicans",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-14",
+"fav": "Philadelphia 76ers",
+"dog": "Brooklyn Nets",
+"ml": -335,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-14",
+"fav": "Atlanta Hawks",
+"dog": "Milwaukee Bucks",
+"ml": -350,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-15",
+"fav": "Detroit Pistons",
+"dog": "Toronto Raptors",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-15",
+"fav": "Milwaukee Bucks",
+"dog": "Indiana Pacers",
+"ml": -255,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2026-03-15",
+"fav": "Sacramento Kings",
+"dog": "Utah Jazz",
+"ml": -144,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": true
+},
+{
+"date": "2025-11-01",
+"fav": "Milwaukee Bucks",
+"dog": "Sacramento Kings",
+"ml": -196,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-01",
+"fav": "Minnesota Timberwolves",
+"dog": "Charlotte Hornets",
+"ml": -168,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-02",
+"fav": "Cleveland Cavaliers",
+"dog": "Atlanta Hawks",
+"ml": -245,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-02",
+"fav": "Los Angeles Lakers",
+"dog": "Miami Heat",
+"ml": -176,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-02",
+"fav": "San Antonio Spurs",
+"dog": "Phoenix Suns",
+"ml": -205,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-02",
+"fav": "Toronto Raptors",
+"dog": "Memphis Grizzlies",
+"ml": -168,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-03",
+"fav": "Detroit Pistons",
+"dog": "Memphis Grizzlies",
+"ml": -172,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-03",
+"fav": "Milwaukee Bucks",
+"dog": "Indiana Pacers",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-04",
+"fav": "Chicago Bulls",
+"dog": "Philadelphia 76ers",
+"ml": -115,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-04",
+"fav": "Orlando Magic",
+"dog": "Atlanta Hawks",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-04",
+"fav": "Toronto Raptors",
+"dog": "Milwaukee Bucks",
+"ml": -138,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-05",
+"fav": "Dallas Mavericks",
+"dog": "New Orleans Pelicans",
+"ml": -265,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-05",
+"fav": "Los Angeles Lakers",
+"dog": "San Antonio Spurs",
+"ml": -104,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-05",
+"fav": "New York Knicks",
+"dog": "Minnesota Timberwolves",
+"ml": -142,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-05",
+"fav": "Oklahoma City Thunder",
+"dog": "Portland Trail Blazers",
+"ml": -158,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-07",
+"fav": "Houston Rockets",
+"dog": "San Antonio Spurs",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-07",
+"fav": "Memphis Grizzlies",
+"dog": "Dallas Mavericks",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-07",
+"fav": "Miami Heat",
+"dog": "Charlotte Hornets",
+"ml": -240,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-07",
+"fav": "Milwaukee Bucks",
+"dog": "Chicago Bulls",
+"ml": -158,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-07",
+"fav": "Orlando Magic",
+"dog": "Boston Celtics",
+"ml": -150,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-08",
+"fav": "Los Angeles Lakers",
+"dog": "Atlanta Hawks",
+"ml": -172,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-08",
+"fav": "Portland Trail Blazers",
+"dog": "Miami Heat",
+"ml": -152,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-09",
+"fav": "Minnesota Timberwolves",
+"dog": "Sacramento Kings",
+"ml": -192,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-09",
+"fav": "Orlando Magic",
+"dog": "Boston Celtics",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-10",
+"fav": "Cleveland Cavaliers",
+"dog": "Miami Heat",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-10",
+"fav": "Los Angeles Clippers",
+"dog": "Atlanta Hawks",
+"ml": -176,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-10",
+"fav": "Milwaukee Bucks",
+"dog": "Dallas Mavericks",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-10",
+"fav": "Orlando Magic",
+"dog": "Portland Trail Blazers",
+"ml": -116,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-11",
+"fav": "Denver Nuggets",
+"dog": "Sacramento Kings",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-12",
+"fav": "Denver Nuggets",
+"dog": "Los Angeles Clippers",
+"ml": -184,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-12",
+"fav": "Milwaukee Bucks",
+"dog": "Charlotte Hornets",
+"ml": -134,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-12",
+"fav": "New York Knicks",
+"dog": "Orlando Magic",
+"ml": -156,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-12",
+"fav": "Oklahoma City Thunder",
+"dog": "Los Angeles Lakers",
+"ml": -300,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-12",
+"fav": "San Antonio Spurs",
+"dog": "Golden State Warriors",
+"ml": -156,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-13",
+"fav": "Cleveland Cavaliers",
+"dog": "Toronto Raptors",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-14",
+"fav": "Detroit Pistons",
+"dog": "Philadelphia 76ers",
+"ml": -154,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-14",
+"fav": "Houston Rockets",
+"dog": "Portland Trail Blazers",
+"ml": -290,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-14",
+"fav": "Los Angeles Clippers",
+"dog": "Dallas Mavericks",
+"ml": -132,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-14",
+"fav": "Milwaukee Bucks",
+"dog": "Charlotte Hornets",
+"ml": -335,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-14",
+"fav": "San Antonio Spurs",
+"dog": "Golden State Warriors",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-15",
+"fav": "Minnesota Timberwolves",
+"dog": "Denver Nuggets",
+"ml": -128,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-15",
+"fav": "Toronto Raptors",
+"dog": "Indiana Pacers",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-16",
+"fav": "Houston Rockets",
+"dog": "Orlando Magic",
+"ml": -280,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-16",
+"fav": "Portland Trail Blazers",
+"dog": "Dallas Mavericks",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-16",
+"fav": "Washington Wizards",
+"dog": "Brooklyn Nets",
+"ml": -132,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-17",
+"fav": "Cleveland Cavaliers",
+"dog": "Milwaukee Bucks",
+"ml": -265,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-18",
+"fav": "Golden State Warriors",
+"dog": "Orlando Magic",
+"ml": -148,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-18",
+"fav": "Portland Trail Blazers",
+"dog": "Phoenix Suns",
+"ml": -132,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-19",
+"fav": "New York Knicks",
+"dog": "Dallas Mavericks",
+"ml": -290,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-20",
+"fav": "Memphis Grizzlies",
+"dog": "Sacramento Kings",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-21",
+"fav": "Chicago Bulls",
+"dog": "Miami Heat",
+"ml": -130,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-21",
+"fav": "Dallas Mavericks",
+"dog": "New Orleans Pelicans",
+"ml": -166,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-21",
+"fav": "Houston Rockets",
+"dog": "Denver Nuggets",
+"ml": -132,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-22",
+"fav": "Dallas Mavericks",
+"dog": "Memphis Grizzlies",
+"ml": -104,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-22",
+"fav": "Detroit Pistons",
+"dog": "Milwaukee Bucks",
+"ml": -320,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-22",
+"fav": "Los Angeles Clippers",
+"dog": "Charlotte Hornets",
+"ml": -109,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-23",
+"fav": "Boston Celtics",
+"dog": "Orlando Magic",
+"ml": -170,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-23",
+"fav": "Cleveland Cavaliers",
+"dog": "Los Angeles Clippers",
+"ml": -300,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-24",
+"fav": "Miami Heat",
+"dog": "Dallas Mavericks",
+"ml": -255,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-24",
+"fav": "Milwaukee Bucks",
+"dog": "Portland Trail Blazers",
+"ml": -105,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-26",
+"fav": "Detroit Pistons",
+"dog": "Boston Celtics",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-26",
+"fav": "Golden State Warriors",
+"dog": "Houston Rockets",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-26",
+"fav": "Memphis Grizzlies",
+"dog": "New Orleans Pelicans",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-26",
+"fav": "Miami Heat",
+"dog": "Milwaukee Bucks",
+"ml": -305,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-26",
+"fav": "Portland Trail Blazers",
+"dog": "San Antonio Spurs",
+"ml": -103,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-28",
+"fav": "Chicago Bulls",
+"dog": "Charlotte Hornets",
+"ml": -136,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-28",
+"fav": "Cleveland Cavaliers",
+"dog": "Atlanta Hawks",
+"ml": -210,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-28",
+"fav": "Denver Nuggets",
+"dog": "San Antonio Spurs",
+"ml": -280,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-28",
+"fav": "Detroit Pistons",
+"dog": "Orlando Magic",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-28",
+"fav": "Los Angeles Clippers",
+"dog": "Memphis Grizzlies",
+"ml": -240,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-28",
+"fav": "New York Knicks",
+"dog": "Milwaukee Bucks",
+"ml": -320,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-29",
+"fav": "Chicago Bulls",
+"dog": "Indiana Pacers",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-29",
+"fav": "Denver Nuggets",
+"dog": "Phoenix Suns",
+"ml": -136,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-29",
+"fav": "Golden State Warriors",
+"dog": "New Orleans Pelicans",
+"ml": -340,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-29",
+"fav": "Los Angeles Clippers",
+"dog": "Dallas Mavericks",
+"ml": -325,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-29",
+"fav": "Miami Heat",
+"dog": "Detroit Pistons",
+"ml": -158,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-29",
+"fav": "Minnesota Timberwolves",
+"dog": "Boston Celtics",
+"ml": -265,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-29",
+"fav": "Toronto Raptors",
+"dog": "Charlotte Hornets",
+"ml": -295,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-30",
+"fav": "Cleveland Cavaliers",
+"dog": "Boston Celtics",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-30",
+"fav": "Memphis Grizzlies",
+"dog": "Sacramento Kings",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-11-30",
+"fav": "Minnesota Timberwolves",
+"dog": "San Antonio Spurs",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-11-30",
+"fav": "New York Knicks",
+"dog": "Toronto Raptors",
+"ml": -295,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-01",
+"fav": "Cleveland Cavaliers",
+"dog": "Indiana Pacers",
+"ml": -174,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-01",
+"fav": "Los Angeles Lakers",
+"dog": "Phoenix Suns",
+"ml": -192,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-01",
+"fav": "Orlando Magic",
+"dog": "Chicago Bulls",
+"ml": -350,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-02",
+"fav": "New York Knicks",
+"dog": "Boston Celtics",
+"ml": -104,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-03",
+"fav": "Atlanta Hawks",
+"dog": "Los Angeles Clippers",
+"ml": -150,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-03",
+"fav": "Detroit Pistons",
+"dog": "Milwaukee Bucks",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-03",
+"fav": "Miami Heat",
+"dog": "Dallas Mavericks",
+"ml": -170,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-03",
+"fav": "New York Knicks",
+"dog": "Charlotte Hornets",
+"ml": -350,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-03",
+"fav": "Orlando Magic",
+"dog": "San Antonio Spurs",
+"ml": -295,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-04",
+"fav": "Philadelphia 76ers",
+"dog": "Golden State Warriors",
+"ml": -160,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-05",
+"fav": "Boston Celtics",
+"dog": "Los Angeles Lakers",
+"ml": -290,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-05",
+"fav": "Chicago Bulls",
+"dog": "Indiana Pacers",
+"ml": -174,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-05",
+"fav": "Cleveland Cavaliers",
+"dog": "San Antonio Spurs",
+"ml": -148,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-05",
+"fav": "Denver Nuggets",
+"dog": "Atlanta Hawks",
+"ml": -186,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-05",
+"fav": "Orlando Magic",
+"dog": "Miami Heat",
+"ml": -200,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-05",
+"fav": "Philadelphia 76ers",
+"dog": "Milwaukee Bucks",
+"ml": -115,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-05",
+"fav": "Toronto Raptors",
+"dog": "Charlotte Hornets",
+"ml": -255,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-06",
+"fav": "Houston Rockets",
+"dog": "Dallas Mavericks",
+"ml": -265,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-06",
+"fav": "Miami Heat",
+"dog": "Sacramento Kings",
+"ml": -335,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-06",
+"fav": "Minnesota Timberwolves",
+"dog": "Los Angeles Clippers",
+"ml": -350,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-07",
+"fav": "Boston Celtics",
+"dog": "Toronto Raptors",
+"ml": -148,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-07",
+"fav": "New York Knicks",
+"dog": "Orlando Magic",
+"ml": -126,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-08",
+"fav": "Indiana Pacers",
+"dog": "Sacramento Kings",
+"ml": -160,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-08",
+"fav": "Minnesota Timberwolves",
+"dog": "Phoenix Suns",
+"ml": -325,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-09",
+"fav": "New York Knicks",
+"dog": "Toronto Raptors",
+"ml": -196,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-09",
+"fav": "Orlando Magic",
+"dog": "Miami Heat",
+"ml": -107,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-10",
+"fav": "Los Angeles Lakers",
+"dog": "San Antonio Spurs",
+"ml": -255,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-11",
+"fav": "Portland Trail Blazers",
+"dog": "New Orleans Pelicans",
+"ml": -160,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-12",
+"fav": "Dallas Mavericks",
+"dog": "Brooklyn Nets",
+"ml": -300,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-12",
+"fav": "Detroit Pistons",
+"dog": "Atlanta Hawks",
+"ml": -265,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-13",
+"fav": "New York Knicks",
+"dog": "Orlando Magic",
+"ml": -186,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-14",
+"fav": "Atlanta Hawks",
+"dog": "Philadelphia 76ers",
+"ml": -182,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-14",
+"fav": "Chicago Bulls",
+"dog": "New Orleans Pelicans",
+"ml": -168,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-14",
+"fav": "Los Angeles Lakers",
+"dog": "Phoenix Suns",
+"ml": -101,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-15",
+"fav": "Boston Celtics",
+"dog": "Detroit Pistons",
+"ml": -115,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-15",
+"fav": "Dallas Mavericks",
+"dog": "Utah Jazz",
+"ml": -127,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-15",
+"fav": "Los Angeles Clippers",
+"dog": "Memphis Grizzlies",
+"ml": -162,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-15",
+"fav": "Miami Heat",
+"dog": "Toronto Raptors",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-17",
+"fav": "Cleveland Cavaliers",
+"dog": "Chicago Bulls",
+"ml": -184,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-18",
+"fav": "Denver Nuggets",
+"dog": "Orlando Magic",
+"ml": -230,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-18",
+"fav": "Detroit Pistons",
+"dog": "Dallas Mavericks",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-18",
+"fav": "Golden State Warriors",
+"dog": "Phoenix Suns",
+"ml": -121,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-18",
+"fav": "Miami Heat",
+"dog": "Brooklyn Nets",
+"ml": -240,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-18",
+"fav": "Portland Trail Blazers",
+"dog": "Sacramento Kings",
+"ml": -305,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-18",
+"fav": "Toronto Raptors",
+"dog": "Milwaukee Bucks",
+"ml": -160,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-19",
+"fav": "Cleveland Cavaliers",
+"dog": "Chicago Bulls",
+"ml": -235,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-19",
+"fav": "New York Knicks",
+"dog": "Philadelphia 76ers",
+"ml": -210,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-19",
+"fav": "Oklahoma City Thunder",
+"dog": "Minnesota Timberwolves",
+"ml": -260,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-20",
+"fav": "Los Angeles Lakers",
+"dog": "Los Angeles Clippers",
+"ml": -116,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-20",
+"fav": "New Orleans Pelicans",
+"dog": "Indiana Pacers",
+"ml": -134,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-20",
+"fav": "Philadelphia 76ers",
+"dog": "Dallas Mavericks",
+"ml": -109,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-20",
+"fav": "Portland Trail Blazers",
+"dog": "Sacramento Kings",
+"ml": -160,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-21",
+"fav": "Atlanta Hawks",
+"dog": "Chicago Bulls",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-21",
+"fav": "New York Knicks",
+"dog": "Miami Heat",
+"ml": -270,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-21",
+"fav": "Toronto Raptors",
+"dog": "Brooklyn Nets",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-22",
+"fav": "Golden State Warriors",
+"dog": "Orlando Magic",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-22",
+"fav": "New Orleans Pelicans",
+"dog": "Dallas Mavericks",
+"ml": -104,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-23",
+"fav": "Atlanta Hawks",
+"dog": "Chicago Bulls",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-23",
+"fav": "Cleveland Cavaliers",
+"dog": "New Orleans Pelicans",
+"ml": -335,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-23",
+"fav": "Denver Nuggets",
+"dog": "Dallas Mavericks",
+"ml": -215,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-23",
+"fav": "Miami Heat",
+"dog": "Toronto Raptors",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-23",
+"fav": "Oklahoma City Thunder",
+"dog": "San Antonio Spurs",
+"ml": -220,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-23",
+"fav": "Phoenix Suns",
+"dog": "Los Angeles Lakers",
+"ml": -154,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-25",
+"fav": "Denver Nuggets",
+"dog": "Minnesota Timberwolves",
+"ml": -103,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-25",
+"fav": "Golden State Warriors",
+"dog": "Dallas Mavericks",
+"ml": -290,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-25",
+"fav": "Oklahoma City Thunder",
+"dog": "San Antonio Spurs",
+"ml": -340,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-26",
+"fav": "Atlanta Hawks",
+"dog": "Miami Heat",
+"ml": -144,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-26",
+"fav": "Orlando Magic",
+"dog": "Charlotte Hornets",
+"ml": -215,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-26",
+"fav": "Toronto Raptors",
+"dog": "Washington Wizards",
+"ml": -265,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-27",
+"fav": "Chicago Bulls",
+"dog": "Milwaukee Bucks",
+"ml": -121,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-27",
+"fav": "Dallas Mavericks",
+"dog": "Sacramento Kings",
+"ml": -146,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-27",
+"fav": "Denver Nuggets",
+"dog": "Orlando Magic",
+"ml": -164,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-27",
+"fav": "Houston Rockets",
+"dog": "Cleveland Cavaliers",
+"ml": -140,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-27",
+"fav": "Miami Heat",
+"dog": "Indiana Pacers",
+"ml": -250,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-27",
+"fav": "Phoenix Suns",
+"dog": "New Orleans Pelicans",
+"ml": -168,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-28",
+"fav": "Golden State Warriors",
+"dog": "Toronto Raptors",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-28",
+"fav": "Memphis Grizzlies",
+"dog": "Washington Wizards",
+"ml": -260,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-29",
+"fav": "Denver Nuggets",
+"dog": "Miami Heat",
+"ml": -125,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-29",
+"fav": "Golden State Warriors",
+"dog": "Brooklyn Nets",
+"ml": -205,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-29",
+"fav": "New York Knicks",
+"dog": "New Orleans Pelicans",
+"ml": -305,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-29",
+"fav": "Orlando Magic",
+"dog": "Toronto Raptors",
+"ml": -106,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-29",
+"fav": "Portland Trail Blazers",
+"dog": "Dallas Mavericks",
+"ml": -126,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-29",
+"fav": "San Antonio Spurs",
+"dog": "Cleveland Cavaliers",
+"ml": -138,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-30",
+"fav": "Detroit Pistons",
+"dog": "Los Angeles Lakers",
+"ml": -128,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-30",
+"fav": "Memphis Grizzlies",
+"dog": "Philadelphia 76ers",
+"ml": -104,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2025-12-31",
+"fav": "Cleveland Cavaliers",
+"dog": "Phoenix Suns",
+"ml": -230,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2025-12-31",
+"fav": "Toronto Raptors",
+"dog": "Denver Nuggets",
+"ml": -230,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-01",
+"fav": "Detroit Pistons",
+"dog": "Miami Heat",
+"ml": -180,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-01",
+"fav": "Philadelphia 76ers",
+"dog": "Dallas Mavericks",
+"ml": -129,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-02",
+"fav": "Los Angeles Lakers",
+"dog": "Memphis Grizzlies",
+"ml": -166,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-02",
+"fav": "New York Knicks",
+"dog": "Atlanta Hawks",
+"ml": -240,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-02",
+"fav": "Orlando Magic",
+"dog": "Chicago Bulls",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-02",
+"fav": "Portland Trail Blazers",
+"dog": "New Orleans Pelicans",
+"ml": -148,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-03",
+"fav": "Chicago Bulls",
+"dog": "Charlotte Hornets",
+"ml": -114,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-03",
+"fav": "Houston Rockets",
+"dog": "Dallas Mavericks",
+"ml": -285,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-03",
+"fav": "New York Knicks",
+"dog": "Philadelphia 76ers",
+"ml": -134,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-03",
+"fav": "San Antonio Spurs",
+"dog": "Portland Trail Blazers",
+"ml": -275,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-04",
+"fav": "Cleveland Cavaliers",
+"dog": "Detroit Pistons",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-04",
+"fav": "Denver Nuggets",
+"dog": "Brooklyn Nets",
+"ml": -126,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-04",
+"fav": "Los Angeles Lakers",
+"dog": "Memphis Grizzlies",
+"ml": -188,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-04",
+"fav": "Miami Heat",
+"dog": "New Orleans Pelicans",
+"ml": -315,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-04",
+"fav": "Orlando Magic",
+"dog": "Indiana Pacers",
+"ml": -225,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-05",
+"fav": "New York Knicks",
+"dog": "Detroit Pistons",
+"ml": -109,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-05",
+"fav": "Toronto Raptors",
+"dog": "Atlanta Hawks",
+"ml": -132,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-06",
+"fav": "Cleveland Cavaliers",
+"dog": "Indiana Pacers",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-06",
+"fav": "Dallas Mavericks",
+"dog": "Sacramento Kings",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-06",
+"fav": "Minnesota Timberwolves",
+"dog": "Miami Heat",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-06",
+"fav": "Orlando Magic",
+"dog": "Washington Wizards",
+"ml": -255,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-06",
+"fav": "San Antonio Spurs",
+"dog": "Memphis Grizzlies",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-08",
+"fav": "Dallas Mavericks",
+"dog": "Utah Jazz",
+"ml": -174,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-08",
+"fav": "Minnesota Timberwolves",
+"dog": "Cleveland Cavaliers",
+"ml": -132,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-09",
+"fav": "Boston Celtics",
+"dog": "Toronto Raptors",
+"ml": -330,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-09",
+"fav": "Philadelphia 76ers",
+"dog": "Orlando Magic",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-10",
+"fav": "Cleveland Cavaliers",
+"dog": "Minnesota Timberwolves",
+"ml": -160,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-10",
+"fav": "Detroit Pistons",
+"dog": "Los Angeles Clippers",
+"ml": -142,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-10",
+"fav": "Miami Heat",
+"dog": "Indiana Pacers",
+"ml": -225,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-11",
+"fav": "Milwaukee Bucks",
+"dog": "Denver Nuggets",
+"ml": -127,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-11",
+"fav": "Minnesota Timberwolves",
+"dog": "San Antonio Spurs",
+"ml": -129,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-11",
+"fav": "Philadelphia 76ers",
+"dog": "Toronto Raptors",
+"ml": -136,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-12",
+"fav": "Boston Celtics",
+"dog": "Indiana Pacers",
+"ml": -190,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-12",
+"fav": "Los Angeles Clippers",
+"dog": "Charlotte Hornets",
+"ml": -178,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-13",
+"fav": "Denver Nuggets",
+"dog": "New Orleans Pelicans",
+"ml": -113,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-13",
+"fav": "Miami Heat",
+"dog": "Phoenix Suns",
+"ml": -107,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-13",
+"fav": "Milwaukee Bucks",
+"dog": "Minnesota Timberwolves",
+"ml": -134,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-13",
+"fav": "Oklahoma City Thunder",
+"dog": "San Antonio Spurs",
+"ml": -285,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-14",
+"fav": "Dallas Mavericks",
+"dog": "Denver Nuggets",
+"ml": -129,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-14",
+"fav": "Toronto Raptors",
+"dog": "Indiana Pacers",
+"ml": -102,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-15",
+"fav": "Dallas Mavericks",
+"dog": "Utah Jazz",
+"ml": -148,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-15",
+"fav": "Detroit Pistons",
+"dog": "Phoenix Suns",
+"ml": -245,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-15",
+"fav": "Golden State Warriors",
+"dog": "New York Knicks",
+"ml": -230,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-15",
+"fav": "Los Angeles Lakers",
+"dog": "Charlotte Hornets",
+"ml": -148,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-15",
+"fav": "Oklahoma City Thunder",
+"dog": "Houston Rockets",
+"ml": -172,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-16",
+"fav": "Brooklyn Nets",
+"dog": "Chicago Bulls",
+"ml": -104,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-16",
+"fav": "Houston Rockets",
+"dog": "Minnesota Timberwolves",
+"ml": -164,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-17",
+"fav": "Boston Celtics",
+"dog": "Atlanta Hawks",
+"ml": -148,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-17",
+"fav": "Dallas Mavericks",
+"dog": "Utah Jazz",
+"ml": -140,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-17",
+"fav": "New York Knicks",
+"dog": "Phoenix Suns",
+"ml": -136,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-17",
+"fav": "Portland Trail Blazers",
+"dog": "Los Angeles Lakers",
+"ml": -138,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-17",
+"fav": "San Antonio Spurs",
+"dog": "Minnesota Timberwolves",
+"ml": -160,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-18",
+"fav": "Los Angeles Lakers",
+"dog": "Toronto Raptors",
+"ml": -105,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-18",
+"fav": "Orlando Magic",
+"dog": "Memphis Grizzlies",
+"ml": -152,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-19",
+"fav": "Detroit Pistons",
+"dog": "Boston Celtics",
+"ml": -129,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-19",
+"fav": "Golden State Warriors",
+"dog": "Miami Heat",
+"ml": -178,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-19",
+"fav": "Oklahoma City Thunder",
+"dog": "Cleveland Cavaliers",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-19",
+"fav": "Philadelphia 76ers",
+"dog": "Indiana Pacers",
+"ml": -205,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-20",
+"fav": "Golden State Warriors",
+"dog": "Toronto Raptors",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-20",
+"fav": "Houston Rockets",
+"dog": "San Antonio Spurs",
+"ml": -158,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-20",
+"fav": "Los Angeles Lakers",
+"dog": "Denver Nuggets",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-20",
+"fav": "Miami Heat",
+"dog": "Sacramento Kings",
+"ml": -160,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-21",
+"fav": "Detroit Pistons",
+"dog": "New Orleans Pelicans",
+"ml": -325,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-21",
+"fav": "Memphis Grizzlies",
+"dog": "Atlanta Hawks",
+"ml": -108,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-22",
+"fav": "Houston Rockets",
+"dog": "Philadelphia 76ers",
+"ml": -128,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-22",
+"fav": "Los Angeles Lakers",
+"dog": "Los Angeles Clippers",
+"ml": -103,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-22",
+"fav": "Minnesota Timberwolves",
+"dog": "Chicago Bulls",
+"ml": -300,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-22",
+"fav": "Orlando Magic",
+"dog": "Charlotte Hornets",
+"ml": -168,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-22",
+"fav": "Portland Trail Blazers",
+"dog": "Miami Heat",
+"ml": -130,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-23",
+"fav": "Detroit Pistons",
+"dog": "Houston Rockets",
+"ml": -162,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-23",
+"fav": "Memphis Grizzlies",
+"dog": "New Orleans Pelicans",
+"ml": -196,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-23",
+"fav": "Milwaukee Bucks",
+"dog": "Denver Nuggets",
+"ml": -245,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-23",
+"fav": "Toronto Raptors",
+"dog": "Portland Trail Blazers",
+"ml": -142,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-24",
+"fav": "Boston Celtics",
+"dog": "Chicago Bulls",
+"ml": -142,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-24",
+"fav": "Los Angeles Lakers",
+"dog": "Dallas Mavericks",
+"ml": -156,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-24",
+"fav": "Miami Heat",
+"dog": "Utah Jazz",
+"ml": -235,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-24",
+"fav": "Philadelphia 76ers",
+"dog": "New York Knicks",
+"ml": -111,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-25",
+"fav": "Los Angeles Clippers",
+"dog": "Brooklyn Nets",
+"ml": -300,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-26",
+"fav": "Atlanta Hawks",
+"dog": "Indiana Pacers",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-26",
+"fav": "Boston Celtics",
+"dog": "Portland Trail Blazers",
+"ml": -260,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-26",
+"fav": "Charlotte Hornets",
+"dog": "Philadelphia 76ers",
+"ml": -122,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-26",
+"fav": "Cleveland Cavaliers",
+"dog": "Orlando Magic",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-27",
+"fav": "Detroit Pistons",
+"dog": "Denver Nuggets",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-27",
+"fav": "Los Angeles Clippers",
+"dog": "Utah Jazz",
+"ml": -255,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-27",
+"fav": "Portland Trail Blazers",
+"dog": "Washington Wizards",
+"ml": -220,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Boston Celtics",
+"dog": "Atlanta Hawks",
+"ml": -188,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Charlotte Hornets",
+"dog": "Memphis Grizzlies",
+"ml": -115,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Chicago Bulls",
+"dog": "Indiana Pacers",
+"ml": -121,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Cleveland Cavaliers",
+"dog": "Los Angeles Lakers",
+"ml": -154,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Golden State Warriors",
+"dog": "Utah Jazz",
+"ml": -280,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Houston Rockets",
+"dog": "San Antonio Spurs",
+"ml": -136,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Miami Heat",
+"dog": "Orlando Magic",
+"ml": -142,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-28",
+"fav": "Minnesota Timberwolves",
+"dog": "Dallas Mavericks",
+"ml": -250,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-29",
+"fav": "Charlotte Hornets",
+"dog": "Dallas Mavericks",
+"ml": -142,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-29",
+"fav": "Denver Nuggets",
+"dog": "Brooklyn Nets",
+"ml": -235,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-29",
+"fav": "Houston Rockets",
+"dog": "Atlanta Hawks",
+"ml": -210,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-29",
+"fav": "Milwaukee Bucks",
+"dog": "Washington Wizards",
+"ml": -123,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-29",
+"fav": "Oklahoma City Thunder",
+"dog": "Minnesota Timberwolves",
+"ml": -205,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-01-30",
+"fav": "Cleveland Cavaliers",
+"dog": "Phoenix Suns",
+"ml": -121,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-30",
+"fav": "Los Angeles Clippers",
+"dog": "Denver Nuggets",
+"ml": -128,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-30",
+"fav": "Orlando Magic",
+"dog": "Toronto Raptors",
+"ml": -126,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-30",
+"fav": "Utah Jazz",
+"dog": "Brooklyn Nets",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-31",
+"fav": "Atlanta Hawks",
+"dog": "Indiana Pacers",
+"ml": -105,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-31",
+"fav": "Miami Heat",
+"dog": "Chicago Bulls",
+"ml": -186,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-01-31",
+"fav": "Philadelphia 76ers",
+"dog": "New Orleans Pelicans",
+"ml": -210,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-01",
+"fav": "Miami Heat",
+"dog": "Chicago Bulls",
+"ml": -210,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-01",
+"fav": "New York Knicks",
+"dog": "Los Angeles Lakers",
+"ml": -184,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-01",
+"fav": "Oklahoma City Thunder",
+"dog": "Denver Nuggets",
+"ml": -215,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-01",
+"fav": "Phoenix Suns",
+"dog": "Los Angeles Clippers",
+"ml": -123,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-01",
+"fav": "San Antonio Spurs",
+"dog": "Orlando Magic",
+"ml": -129,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-02",
+"fav": "Minnesota Timberwolves",
+"dog": "Memphis Grizzlies",
+"ml": -225,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-03",
+"fav": "Boston Celtics",
+"dog": "Dallas Mavericks",
+"ml": -240,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-03",
+"fav": "Chicago Bulls",
+"dog": "Milwaukee Bucks",
+"ml": -105,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-03",
+"fav": "Detroit Pistons",
+"dog": "Denver Nuggets",
+"ml": -186,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-03",
+"fav": "Golden State Warriors",
+"dog": "Philadelphia 76ers",
+"ml": -176,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-03",
+"fav": "Los Angeles Lakers",
+"dog": "Brooklyn Nets",
+"ml": -285,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-03",
+"fav": "Oklahoma City Thunder",
+"dog": "Orlando Magic",
+"ml": -265,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-03",
+"fav": "Phoenix Suns",
+"dog": "Portland Trail Blazers",
+"ml": -146,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-04",
+"fav": "Houston Rockets",
+"dog": "Boston Celtics",
+"ml": -235,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-04",
+"fav": "Minnesota Timberwolves",
+"dog": "Toronto Raptors",
+"ml": -109,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-04",
+"fav": "New York Knicks",
+"dog": "Denver Nuggets",
+"ml": -178,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-05",
+"fav": "Los Angeles Lakers",
+"dog": "Philadelphia 76ers",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-05",
+"fav": "Orlando Magic",
+"dog": "Brooklyn Nets",
+"ml": -335,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-05",
+"fav": "Phoenix Suns",
+"dog": "Golden State Warriors",
+"ml": -192,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-05",
+"fav": "San Antonio Spurs",
+"dog": "Dallas Mavericks",
+"ml": -280,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-05",
+"fav": "Toronto Raptors",
+"dog": "Chicago Bulls",
+"ml": -280,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-06",
+"fav": "Boston Celtics",
+"dog": "Miami Heat",
+"ml": -215,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-06",
+"fav": "Detroit Pistons",
+"dog": "New York Knicks",
+"ml": -162,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-06",
+"fav": "Minnesota Timberwolves",
+"dog": "New Orleans Pelicans",
+"ml": -305,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-07",
+"fav": "Denver Nuggets",
+"dog": "Chicago Bulls",
+"ml": -240,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-07",
+"fav": "Los Angeles Lakers",
+"dog": "Golden State Warriors",
+"ml": -114,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-07",
+"fav": "Oklahoma City Thunder",
+"dog": "Houston Rockets",
+"ml": -168,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-07",
+"fav": "Orlando Magic",
+"dog": "Utah Jazz",
+"ml": -280,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-07",
+"fav": "Phoenix Suns",
+"dog": "Philadelphia 76ers",
+"ml": -130,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-07",
+"fav": "Portland Trail Blazers",
+"dog": "Memphis Grizzlies",
+"ml": -315,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-09",
+"fav": "Denver Nuggets",
+"dog": "Cleveland Cavaliers",
+"ml": -104,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-09",
+"fav": "Golden State Warriors",
+"dog": "Memphis Grizzlies",
+"ml": -335,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-09",
+"fav": "Miami Heat",
+"dog": "Utah Jazz",
+"ml": -235,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-09",
+"fav": "Minnesota Timberwolves",
+"dog": "Atlanta Hawks",
+"ml": -285,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-09",
+"fav": "Oklahoma City Thunder",
+"dog": "Los Angeles Lakers",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-10",
+"fav": "Phoenix Suns",
+"dog": "Dallas Mavericks",
+"ml": -290,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-11",
+"fav": "Charlotte Hornets",
+"dog": "Atlanta Hawks",
+"ml": -144,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-11",
+"fav": "Minnesota Timberwolves",
+"dog": "Portland Trail Blazers",
+"ml": -260,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-11",
+"fav": "New Orleans Pelicans",
+"dog": "Miami Heat",
+"ml": -112,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-11",
+"fav": "Utah Jazz",
+"dog": "Sacramento Kings",
+"ml": -186,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-12",
+"fav": "Los Angeles Lakers",
+"dog": "Dallas Mavericks",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-19",
+"fav": "Indiana Pacers",
+"dog": "Washington Wizards",
+"ml": -120,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-19",
+"fav": "New York Knicks",
+"dog": "Detroit Pistons",
+"ml": -150,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-19",
+"fav": "Orlando Magic",
+"dog": "Sacramento Kings",
+"ml": -315,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-19",
+"fav": "Philadelphia 76ers",
+"dog": "Atlanta Hawks",
+"ml": -108,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-20",
+"fav": "Memphis Grizzlies",
+"dog": "Utah Jazz",
+"ml": -123,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-20",
+"fav": "Miami Heat",
+"dog": "Atlanta Hawks",
+"ml": -136,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-20",
+"fav": "New Orleans Pelicans",
+"dog": "Milwaukee Bucks",
+"ml": -158,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-21",
+"fav": "New York Knicks",
+"dog": "Houston Rockets",
+"ml": -154,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-21",
+"fav": "Phoenix Suns",
+"dog": "Orlando Magic",
+"ml": -130,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-22",
+"fav": "Boston Celtics",
+"dog": "Los Angeles Lakers",
+"ml": -107,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-22",
+"fav": "Cleveland Cavaliers",
+"dog": "Oklahoma City Thunder",
+"ml": -162,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-22",
+"fav": "Dallas Mavericks",
+"dog": "Indiana Pacers",
+"ml": -119,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-22",
+"fav": "Denver Nuggets",
+"dog": "Golden State Warriors",
+"ml": -250,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-22",
+"fav": "Los Angeles Clippers",
+"dog": "Orlando Magic",
+"ml": -111,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-22",
+"fav": "Minnesota Timberwolves",
+"dog": "Philadelphia 76ers",
+"ml": -320,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-23",
+"fav": "Detroit Pistons",
+"dog": "San Antonio Spurs",
+"ml": -111,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-23",
+"fav": "Memphis Grizzlies",
+"dog": "Sacramento Kings",
+"ml": -136,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-24",
+"fav": "Boston Celtics",
+"dog": "Phoenix Suns",
+"ml": -198,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-24",
+"fav": "Charlotte Hornets",
+"dog": "Chicago Bulls",
+"ml": -290,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-24",
+"fav": "Cleveland Cavaliers",
+"dog": "New York Knicks",
+"ml": -156,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-24",
+"fav": "Golden State Warriors",
+"dog": "New Orleans Pelicans",
+"ml": -110,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-24",
+"fav": "Los Angeles Lakers",
+"dog": "Orlando Magic",
+"ml": -186,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-25",
+"fav": "Cleveland Cavaliers",
+"dog": "Milwaukee Bucks",
+"ml": -156,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-25",
+"fav": "San Antonio Spurs",
+"dog": "Toronto Raptors",
+"ml": -255,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-26",
+"fav": "Houston Rockets",
+"dog": "Orlando Magic",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-02-27",
+"fav": "Dallas Mavericks",
+"dog": "Memphis Grizzlies",
+"ml": -174,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-27",
+"fav": "Detroit Pistons",
+"dog": "Cleveland Cavaliers",
+"ml": -210,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-27",
+"fav": "Oklahoma City Thunder",
+"dog": "Denver Nuggets",
+"ml": -285,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-28",
+"fav": "Charlotte Hornets",
+"dog": "Portland Trail Blazers",
+"ml": -270,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-02-28",
+"fav": "Houston Rockets",
+"dog": "Miami Heat",
+"ml": -125,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-01",
+"fav": "Detroit Pistons",
+"dog": "Orlando Magic",
+"ml": -188,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-02",
+"fav": "Boston Celtics",
+"dog": "Milwaukee Bucks",
+"ml": -132,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-03",
+"fav": "Los Angeles Lakers",
+"dog": "New Orleans Pelicans",
+"ml": -310,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-03",
+"fav": "Oklahoma City Thunder",
+"dog": "Chicago Bulls",
+"ml": -345,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-03",
+"fav": "Phoenix Suns",
+"dog": "Sacramento Kings",
+"ml": -340,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-03",
+"fav": "San Antonio Spurs",
+"dog": "Philadelphia 76ers",
+"ml": -280,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-04",
+"fav": "Oklahoma City Thunder",
+"dog": "New York Knicks",
+"ml": -160,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-04",
+"fav": "Philadelphia 76ers",
+"dog": "Utah Jazz",
+"ml": -300,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-05",
+"fav": "Denver Nuggets",
+"dog": "Los Angeles Lakers",
+"ml": -164,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-05",
+"fav": "Houston Rockets",
+"dog": "Golden State Warriors",
+"ml": -320,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-05",
+"fav": "Minnesota Timberwolves",
+"dog": "Toronto Raptors",
+"ml": -186,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-05",
+"fav": "New Orleans Pelicans",
+"dog": "Sacramento Kings",
+"ml": -200,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-05",
+"fav": "Orlando Magic",
+"dog": "Dallas Mavericks",
+"ml": -295,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-05",
+"fav": "San Antonio Spurs",
+"dog": "Detroit Pistons",
+"ml": -142,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-06",
+"fav": "Charlotte Hornets",
+"dog": "Miami Heat",
+"ml": -260,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-06",
+"fav": "Denver Nuggets",
+"dog": "New York Knicks",
+"ml": -102,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-06",
+"fav": "Houston Rockets",
+"dog": "Portland Trail Blazers",
+"ml": -225,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-06",
+"fav": "Phoenix Suns",
+"dog": "New Orleans Pelicans",
+"ml": -162,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-06",
+"fav": "San Antonio Spurs",
+"dog": "Los Angeles Clippers",
+"ml": -255,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-07",
+"fav": "Atlanta Hawks",
+"dog": "Philadelphia 76ers",
+"ml": -230,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-07",
+"fav": "Los Angeles Clippers",
+"dog": "Memphis Grizzlies",
+"ml": -260,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-07",
+"fav": "Minnesota Timberwolves",
+"dog": "Orlando Magic",
+"ml": -235,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-08",
+"fav": "Chicago Bulls",
+"dog": "Sacramento Kings",
+"ml": -128,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-08",
+"fav": "Cleveland Cavaliers",
+"dog": "Boston Celtics",
+"ml": -102,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-08",
+"fav": "Detroit Pistons",
+"dog": "Miami Heat",
+"ml": -109,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-08",
+"fav": "New York Knicks",
+"dog": "Los Angeles Lakers",
+"ml": -140,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-09",
+"fav": "Oklahoma City Thunder",
+"dog": "Denver Nuggets",
+"ml": -235,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-10",
+"fav": "Houston Rockets",
+"dog": "Toronto Raptors",
+"ml": -174,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-10",
+"fav": "Minnesota Timberwolves",
+"dog": "Los Angeles Lakers",
+"ml": -123,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-10",
+"fav": "Philadelphia 76ers",
+"dog": "Memphis Grizzlies",
+"ml": -142,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-10",
+"fav": "Phoenix Suns",
+"dog": "Milwaukee Bucks",
+"ml": -112,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-10",
+"fav": "Sacramento Kings",
+"dog": "Indiana Pacers",
+"ml": -142,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-10",
+"fav": "San Antonio Spurs",
+"dog": "Boston Celtics",
+"ml": -144,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-11",
+"fav": "Cleveland Cavaliers",
+"dog": "Orlando Magic",
+"ml": -150,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-11",
+"fav": "Denver Nuggets",
+"dog": "Houston Rockets",
+"ml": -245,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-11",
+"fav": "Los Angeles Clippers",
+"dog": "Minnesota Timberwolves",
+"ml": -110,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-12",
+"fav": "Oklahoma City Thunder",
+"dog": "Boston Celtics",
+"ml": -265,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-12",
+"fav": "San Antonio Spurs",
+"dog": "Denver Nuggets",
+"ml": -170,
+"fired": {
+"book": true,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-13",
+"fav": "Minnesota Timberwolves",
+"dog": "Golden State Warriors",
+"ml": -196,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-14",
+"fav": "Denver Nuggets",
+"dog": "Los Angeles Lakers",
+"ml": -125,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-14",
+"fav": "Miami Heat",
+"dog": "Orlando Magic",
+"ml": -162,
+"fired": {
+"book": false,
+"grinder": true,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-14",
+"fav": "San Antonio Spurs",
+"dog": "Charlotte Hornets",
+"ml": -178,
+"fired": {
+"book": true,
+"grinder": false,
+"pace/TOV": false,
+"FT/def": false
+},
+"kept": false
+},
+{
+"date": "2026-03-15",
+"fav": "Oklahoma City Thunder",
+"dog": "Minnesota Timberwolves",
+"ml": -345,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": true
+},
+"kept": false
+},
+{
+"date": "2026-03-15",
+"fav": "Portland Trail Blazers",
+"dog": "Philadelphia 76ers",
+"ml": -315,
+"fired": {
+"book": false,
+"grinder": false,
+"pace/TOV": true,
+"FT/def": false
+},
+"kept": false
+}
+]
+}

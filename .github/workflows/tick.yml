@@ -1,0 +1,41 @@
+# Rolling tick (Design B §12.3 / §12.7) — the app's heartbeat.
+#
+# Appends a fresh odds snapshot and alerts survivors ~1:55 before tip. All state
+# lives in the hosted DB, so every run is idempotent and self-healing. Cron is
+# UTC; the NBA active window (ET 14:00–24:00) is ~UTC 19:00 through 05:00, so we
+# poll every 5 minutes across that band. run_tick itself skips games that aren't
+# in their alert window, so off-slate ticks are cheap.
+name: tick
+on:
+  schedule:
+    - cron: "*/5 19-23 * * *"   # UTC 19:00–23:55  (ET 14:00–18:55)
+    - cron: "*/5 0-4 * * *"     # UTC 00:00–04:55  (ET 19:00–23:55)
+  workflow_dispatch: {}         # manual trigger for testing
+
+concurrency:
+  group: tick                   # never overlap ticks
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: run tick
+        env:
+          ODDSAPIKEY: ${{ secrets.ODDSAPIKEY }}
+          SUPABASEURL: ${{ secrets.SUPABASEURL }}
+          SUPABASEKEY: ${{ secrets.SUPABASEKEY }}
+          EMAILAPIKEY: ${{ secrets.EMAILAPIKEY }}
+          # Non-secret runtime config (GitHub Actions Variables, not Secrets):
+          STAGE: ${{ vars.STAGE }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          EMAIL_TO: ${{ vars.EMAIL_TO }}
+          PAGE_URL: ${{ vars.PAGE_URL }}
+          STAKE_TARGET: ${{ vars.STAKE_TARGET }}
+        run: python -m engine.tick

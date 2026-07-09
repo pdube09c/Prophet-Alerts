@@ -1,0 +1,33 @@
+# Non-secret configuration template. Copy to config/settings.toml (git-ignored)
+# and adjust. Secrets are NEVER here — they are read from environment variables
+# (GitHub Actions Secrets): ODDSAPIKEY, SUPABASEURL, SUPABASEKEY, and the
+# not-yet-wired email/page secrets. See .env.example.
+
+[app]
+# Staged rollout gate (Design B §11). Alerts are labeled with this.
+#   "paper"    — Stage 0: log intended bets at $0, no real money.
+#   "stage1"   — small real money, flat $100.
+#   "stage2"   — scaled stake target.
+stage = "paper"
+
+[odds]
+# The Odds API (spreads + h2h).
+books = ["pinnacle", "prophetx", "williamhill_us", "betmgm", "fanduel", "draftkings"]
+odds_format = "american"
+include_bet_limits = true
+
+[nba]
+entry_offset_minutes = 115        # alert 1:55 before tip
+price_band_min = -350             # favorite ML band (inclusive)
+price_band_max = -100
+min_games_played = 6              # GP gate, both teams
+active_window_hours = [14, 24]    # ET hours to run the dense tick
+
+[email]
+# Sender identity is non-secret; the API key is a Secret (EMAIL_API_KEY).
+to = ""
+from = ""
+
+[page]
+# Public URL of the static selection page (the link in alerts).
+url = ""

@@ -1,0 +1,19 @@
+# Secrets — real values live in GitHub Actions Secrets / a local .env, never in git
+.env
+.env.local
+.env.*.local
+config/settings.toml
+web/config.js
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Node (static page tooling, if any)
+node_modules/
+
+# No on-disk app state — all state lives in the hosted DB (Design B §1)
+data/
