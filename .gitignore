@@ -3,7 +3,9 @@
 .env.local
 .env.*.local
 config/settings.toml
-web/config.js
+# web/config.js is intentionally COMMITTED: GitHub Pages serves the static page
+# from the repo, and it holds only the public anon key (gated by RLS). The
+# service_role key lives in GitHub Actions Secrets and never appears in web/.
 
 # Python
 __pycache__/
