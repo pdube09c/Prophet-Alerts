@@ -4,9 +4,9 @@ Thin HTTP client over a transactional email provider. Like every other
 credential, the API key is read ONLY from the environment (GitHub Actions
 Secret `EMAILAPIKEY`) — never hard-coded or logged.
 
-Default provider is Resend (POST https://api.resend.com/emails, Bearer key).
-To swap providers, override EMAILAPIURL and adjust `_payload`; the public
-`send()` signature stays put so callers don't change.
+Default provider is SendGrid (POST https://api.sendgrid.com/v3/mail/send,
+Bearer key). To swap providers, override EMAILAPIURL and adjust `_payload`; the
+public `send()` signature stays put so callers don't change.
 
 Sender/recipient identities are NON-secret and come from config
 (settings.toml [email] from/to), passed in by the caller.
@@ -19,7 +19,7 @@ from typing import Optional
 
 import requests
 
-_DEFAULT_URL = "https://api.resend.com/emails"
+_DEFAULT_URL = "https://api.sendgrid.com/v3/mail/send"
 _TIMEOUT = 30
 
 
@@ -34,8 +34,17 @@ def _config() -> tuple[str, str]:
 
 
 def _payload(sender: str, to: str, subject: str, html: str, text: str) -> dict:
-    return {"from": sender, "to": [to], "subject": subject,
-            "html": html, "text": text}
+    # SendGrid v3 mail-send shape. `content` MUST list text/plain before
+    # text/html (SendGrid orders parts as given and requires that order).
+    return {
+        "personalizations": [{"to": [{"email": to}]}],
+        "from": {"email": sender},
+        "subject": subject,
+        "content": [
+            {"type": "text/plain", "value": text},
+            {"type": "text/html", "value": html},
+        ],
+    }
 
 
 def send(sender: str, to: str, subject: str, *, html: str, text: str) -> None:
