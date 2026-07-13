@@ -15,6 +15,7 @@ from dataclasses import dataclass
 
 from engine import config, db
 from engine import email as _email
+from engine.stake import is_paper
 
 
 @dataclass(frozen=True)
@@ -42,7 +43,7 @@ def build_summary(date: str, stage: str, settled_bets: list[dict],
     veto_saved = sum(1 for v in settled_vetoes if not v["favwin_actual"])
     veto_cost = sum(1 for v in settled_vetoes if v["favwin_actual"])
 
-    tag = "PAPER" if stage == "paper" else stage.upper()
+    tag = "PAPER" if is_paper(stage) else stage.upper()
     subject = (f"[{tag}] {date} — {wins}-{losses}, {_money(pnl)}"
                if placed else f"[{tag}] {date} — no bets placed")
 

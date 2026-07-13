@@ -25,6 +25,13 @@ STAGE1_FLAT = 100.0
 DEFAULT_STAGE2_TARGET = 250.0
 
 
+def _norm_stage(stage: str) -> str:
+    """Normalize the stage label so comparisons are case/whitespace-insensitive.
+    STAGE arrives from a GitHub Actions Variable / settings.toml, so a casing
+    slip ('Paper', ' PAPER ') must not misroute or crash the alert path."""
+    return stage.strip().lower()
+
+
 def to_win(stake: float, ml: int) -> float:
     """Profit if the favorite wins, net of the exchange haircut. ml is the
     (negative) American moneyline the favorite is laid at."""
@@ -40,6 +47,7 @@ def recommended_stake(stage: str, *, liquidity: Optional[float] = None,
     Stage 2 is capped by posted liquidity when the book reports a limit; paper
     and stage 1 are fixed regardless of liquidity.
     """
+    stage = _norm_stage(stage)
     if stage == "paper":
         return 0.0
     if stage == "stage1":
@@ -52,4 +60,4 @@ def recommended_stake(stage: str, *, liquidity: Optional[float] = None,
 
 
 def is_paper(stage: str) -> bool:
-    return stage == "paper"
+    return _norm_stage(stage) == "paper"
