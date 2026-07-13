@@ -109,9 +109,11 @@ def send_alert(cand, cfg: AlertConfig, *, sender=_email.send,
 
 
 # --- smoke test --------------------------------------------------------------
-# `python -m engine.alert --smoke` forces one sample alert through the REAL
-# SendGrid path using live config, so the whole compose -> send -> inbox chain
-# can be verified on demand, independent of the schedule and the DB.
+# `python -m engine.alert --smoke [--stage STAGE]` forces one sample alert
+# through the REAL SendGrid path using live config, so the whole compose ->
+# send -> inbox chain can be verified on demand, independent of the schedule
+# and the DB. --stage overrides ONLY the stake calc for that one run (in
+# memory) so stage1/stage2 sizing can be seen without touching the real STAGE.
 
 def _smoke_candidate():
     """A synthetic, obviously-fake survivor. Built in memory — this path never
@@ -130,22 +132,48 @@ def _smoke_candidate():
                      entry_time_actual=tip)
 
 
-def _smoke() -> None:
+_SMOKE_STAGES = ("paper", "stage1", "stage2")
+
+
+def _smoke(stage_override: Optional[str] = None) -> None:
     """Send one [SMOKE TEST] alert via SendGrid using the live alert config
-    (STAGE/EMAIL_FROM/EMAIL_TO/... from the env or settings.toml)."""
+    (STAGE/EMAIL_FROM/EMAIL_TO/... from the env or settings.toml).
+
+    `stage_override` swaps ONLY the stage used for the stake calc in this run,
+    via an in-memory dataclasses.replace on the config — it is never persisted,
+    writes no DB, and does not change the real STAGE Variable/env. Defaults to
+    the live config's stage when None.
+    """
+    from dataclasses import replace
     from engine.config import alert_config  # local import: avoids import cycle
 
     cfg = alert_config()
+    if stage_override is not None:
+        norm = stage_override.strip().lower()
+        if norm not in _SMOKE_STAGES:
+            raise SystemExit(
+                f"--stage must be one of {'|'.join(_SMOKE_STAGES)}; "
+                f"got {stage_override!r}")
+        cfg = replace(cfg, stage=norm)  # in-memory only; real STAGE untouched
+
     send_alert(_smoke_candidate(), cfg, marker="SMOKE TEST")
     print(f"[SMOKE TEST] alert sent to {cfg.email_to!r} "
           f"(stage={cfg.stage!r}, from={cfg.email_from!r})")
 
 
 if __name__ == "__main__":
-    import sys
+    import argparse
 
-    if "--smoke" in sys.argv[1:]:
-        _smoke()
-    else:
-        print("usage: python -m engine.alert --smoke", file=sys.stderr)
-        sys.exit(2)
+    parser = argparse.ArgumentParser(
+        prog="python -m engine.alert",
+        description="Force a synthetic [SMOKE TEST] alert through SendGrid.")
+    parser.add_argument("--smoke", action="store_true",
+                        help="send one synthetic alert via the real email path")
+    parser.add_argument("--stage", metavar="STAGE", default=None,
+                        help="override the stake-calc stage for this run only "
+                             "(paper|stage1|stage2); defaults to live config")
+    args = parser.parse_args()
+
+    if not args.smoke:
+        parser.error("nothing to do — pass --smoke")
+    _smoke(stage_override=args.stage)
