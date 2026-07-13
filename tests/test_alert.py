@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 import pytest
 
 from engine.alert import AlertConfig, build_alert, send_alert
+from engine.config import DEFAULT_STAKE_LADDER, _validate_stake_ladder
 from engine.stake import recommended_stake, to_win
 from sports.base import Candidate, Game
 
@@ -90,3 +91,64 @@ def test_send_alert_passes_composed_message_to_sender():
     assert captured["to"] == "to@y"
     assert captured["subject"].startswith("[PAPER]")
     assert "<h2>" in captured["html"]
+
+
+# --- reference stake ladder --------------------------------------------------
+
+def _ladder_cfg(stage="stage1"):
+    return AlertConfig(stage=stage, email_from="a@x", email_to="b@y",
+                       page_url="https://page", stake_ladder=DEFAULT_STAKE_LADDER)
+
+
+def test_ladder_omitted_when_unconfigured():
+    # Default AlertConfig has an empty ladder -> no ladder section at all.
+    cfg = AlertConfig(stage="paper", email_from="a@x", email_to="b@y",
+                      page_url="https://page")
+    msg = build_alert(_cand(), cfg)
+    assert "Reference ladder" not in msg.text
+    assert "Reference ladder" not in msg.html
+
+
+def test_recommendation_precedes_and_is_distinct_from_ladder():
+    # Hierarchy must survive in BOTH text and html: the recommendation comes
+    # first and is not part of the ladder.
+    msg = build_alert(_cand(liq=1234.0), _ladder_cfg())
+    assert msg.text.index("RECOMMENDED STAKE") < msg.text.index("Reference ladder")
+    assert (msg.html.index("Recommended stake")
+            < msg.html.index("Reference ladder"))
+    assert "not the recommendation" in msg.html
+
+
+def test_ladder_caps_stake_at_liquidity_and_tags_row():
+    # liquidity 1234 -> targets above it are capped to 1234 and flagged.
+    msg = build_alert(_cand(ml=-150, liq=1234.0), _ladder_cfg())
+    assert "$1,000.00" in msg.text          # 1000 target uncapped
+    assert "$1,234.00" in msg.text          # 2000+ targets capped to liquidity
+    assert "cap" in msg.text
+    # to-win uses the same 0.98 ML haircut: 1000 @ -150 -> 653.33
+    assert "$653.33" in msg.text
+
+
+def test_ladder_uncapped_when_no_liquidity():
+    msg = build_alert(_cand(ml=-150, liq=None), _ladder_cfg())
+    assert "$5,000.00" in msg.text          # full target shown, no cap
+    assert "cap =" not in msg.text          # no cap footnote
+
+
+@pytest.mark.parametrize("bad", [
+    "100,500",          # string, not a list
+    [],                 # empty
+    [100, -5],          # negative
+    [500, 100],         # not ascending
+    [100, 100],         # not strictly ascending
+    [100, "x"],         # non-number entry
+    [True, 100],        # bool is not an allowed number
+])
+def test_validate_stake_ladder_rejects_malformed(bad):
+    with pytest.raises(ValueError):
+        _validate_stake_ladder(bad)
+
+
+def test_validate_stake_ladder_accepts_and_normalizes():
+    assert _validate_stake_ladder([100, 500, 1000]) == (100.0, 500.0, 1000.0)
+    assert _validate_stake_ladder(list(DEFAULT_STAKE_LADDER)) == DEFAULT_STAKE_LADDER

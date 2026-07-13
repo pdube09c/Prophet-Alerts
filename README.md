@@ -36,9 +36,13 @@ config lives in `config/settings.example.toml` → `config/settings.toml`.
 **Non-secret runtime config** (safe to expose) can also come from GitHub Actions
 **Variables** (the `vars` context, *not* Secrets), which override the file so CI
 needs no `settings.toml`: `STAGE`, `EMAIL_FROM`, `EMAIL_TO`, `PAGE_URL`,
-`STAKE_TARGET`. The static page's client values (`SUPABASE_URL`, the **anon**
-key, `STAGE`) live in git-ignored `web/config.js` — the `service_role` key never
-touches the browser.
+`STAKE_TARGET`, `STAKE_LADDER`. `STAKE_LADDER` (comma-separated, e.g.
+`100,500,1000,2000,3000,5000`) sets the reference stake ladder shown in each
+alert; it mirrors `[nba] stake_ladder` in `settings.toml`, is validated on load
+(non-empty, positive, strictly ascending — malformed values fail loudly), and is
+per-environment so it can differ by sport later. The static page's client values
+(`SUPABASE_URL`, the **anon** key, `STAGE`) live in git-ignored `web/config.js` —
+the `service_role` key never touches the browser.
 
 ## Staged rollout (discipline gates, §11)
 

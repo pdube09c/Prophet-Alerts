@@ -28,6 +28,10 @@ class AlertConfig:
     email_to: str
     page_url: str
     stage2_target: float = 250.0
+    # Reference stake ladder, validated + supplied by the config loader (see
+    # engine/config.py). Empty here so no stake numbers are hard-coded in this
+    # module; build_alert renders the ladder section only when it's populated.
+    stake_ladder: tuple = ()
 
 
 @dataclass(frozen=True)
@@ -39,6 +43,68 @@ class Composed:
 
 def _fmt_ml(ml: int) -> str:
     return f"+{ml}" if ml > 0 else str(ml)
+
+
+def _ladder_rows(stake_ladder, liquidity, ml):
+    """Reference ladder rows: (target, stake, to_win, capped) for each target.
+    `stake` is the target bound by posted liquidity when known (same cap rule as
+    stage-2 sizing); `capped` flags rows the liquidity ceiling actually bound."""
+    rows = []
+    for target in stake_ladder:
+        if liquidity is not None and liquidity > 0 and target > liquidity:
+            stake, capped = float(liquidity), True
+        else:
+            stake, capped = float(target), False
+        rows.append((target, stake, to_win(stake, ml), capped))
+    return rows
+
+
+def _ladder_text(rows, liq: str) -> list[str]:
+    """Plain-text ladder — clearly labeled reference, secondary to the
+    recommendation above it. No styling to lean on, so a header + a 'cap' tag
+    column carry the meaning."""
+    out = ["Reference ladder (informational — NOT the recommendation):",
+           f"  {'Target':<9}{'Stake':<14}{'To win':<13}"]
+    for target, stake, win, capped in rows:
+        out.append(f"  {'$' + format(target, ',.0f'):<9}"
+                   f"{'$' + format(stake, ',.2f'):<14}"
+                   f"{'$' + format(win, ',.2f'):<13}"
+                   f"{'cap' if capped else ''}")
+    if any(r[3] for r in rows):
+        out.append(f"  cap = stake limited by posted liquidity ({liq})")
+    return out
+
+
+def _ladder_html(rows, liq: str) -> str:
+    """Plain, muted reference table — deliberately smaller/greyer than the
+    recommended-stake callout so it reads as secondary context."""
+    head = ('<tr style="color:#888;font-size:12px;text-align:left">'
+            '<th style="padding:2px 14px 2px 0">Target</th>'
+            '<th style="padding:2px 14px 2px 0;text-align:right">Stake</th>'
+            '<th style="padding:2px 14px 2px 0;text-align:right">To win</th>'
+            '<th style="padding:2px 0"></th></tr>')
+    body = ""
+    for target, stake, win, capped in rows:
+        tag = ('<span style="color:#b06000;font-size:11px;font-weight:600">'
+               'cap</span>') if capped else ""
+        body += ('<tr>'
+                 f'<td style="padding:2px 14px 2px 0">${target:,.0f}</td>'
+                 f'<td style="padding:2px 14px 2px 0;text-align:right">'
+                 f'${stake:,.2f}</td>'
+                 f'<td style="padding:2px 14px 2px 0;text-align:right">'
+                 f'${win:,.2f}</td>'
+                 f'<td style="padding:2px 0">{tag}</td></tr>')
+    note = (f'<p style="font-size:11px;color:#999;margin:4px 0 0">'
+            f'cap = stake limited by posted liquidity ({liq}).</p>'
+            if any(r[3] for r in rows) else "")
+    return (
+        '<h3 style="font-size:12px;color:#888;font-weight:600;'
+        'text-transform:uppercase;letter-spacing:.05em;margin:18px 0 4px">'
+        'Reference ladder '
+        '<span style="font-weight:400;text-transform:none;letter-spacing:0">'
+        '(informational — not the recommendation)</span></h3>'
+        '<table style="border-collapse:collapse;color:#555;font-size:13px">'
+        f'{head}{body}</table>{note}')
 
 
 def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Composed:
@@ -65,6 +131,17 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
         banner_html = (f'<p style="color:#b00000"><b>{marker}</b> — synthetic '
                        f"candidate, NOT a real selection. Do not bet.</p>")
 
+    rows = _ladder_rows(cfg.stake_ladder, cand.liquidity, cand.entry_ml)
+
+    # The recommendation is what the reader must see first — boxed and set off
+    # by blank lines so it is unmistakable in plain text. The ladder sits below.
+    rec_block = [
+        "==================================================",
+        f"  >> RECOMMENDED STAKE ({tag}): ${stake:,.2f}",
+        f"     to win ${win:,.2f}",
+        "==================================================",
+    ]
+    ladder_block = ["", *_ladder_text(rows, liq)] if rows else []
     lines = banner_txt + [
         f"SURVIVOR — {cand.sport.upper()} ({tag})",
         "",
@@ -73,12 +150,26 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
         f"Tip      : {tip}",
         f"Liquidity: {liq}",
         "",
-        f"Recommended stake: ${stake:,.2f}  ->  to win ${win:,.2f}",
+        *rec_block,
+        *ladder_block,
         "",
         "This app does not place bets. Log your decision here:",
         cfg.page_url or "(selection page URL not configured)",
     ]
     text = "\n".join(lines)
+
+    # HTML: a large green callout for the recommendation, dominant over the
+    # smaller/greyer reference-ladder table beneath it.
+    rec_html = (
+        '<div style="margin:16px 0;padding:14px 18px;border:2px solid #0a7d00;'
+        'border-radius:8px;background:#f2fff0">'
+        '<div style="font-size:12px;color:#555;font-weight:600;'
+        f'text-transform:uppercase;letter-spacing:.06em">Recommended stake — {tag}</div>'
+        '<div style="font-size:28px;line-height:1.15;font-weight:800;'
+        f'color:#0a3d00;margin-top:2px">${stake:,.2f}</div>'
+        '<div style="font-size:15px;color:#333;margin-top:2px">'
+        f'&rarr; to win ${win:,.2f}</div></div>'
+    )
     html = (
         banner_html
         + f"<h2>Survivor — {cand.sport.upper()} "
@@ -89,10 +180,10 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
         f"<tr><td><b>Underdog</b></td><td>{cand.dog}</td></tr>"
         f"<tr><td><b>Tip</b></td><td>{tip}</td></tr>"
         f"<tr><td><b>Liquidity</b></td><td>{liq}</td></tr>"
-        f"<tr><td><b>Recommended stake</b></td>"
-        f"<td>${stake:,.2f} &rarr; to win ${win:,.2f}</td></tr>"
         f"</table>"
-        f"<p><i>This app does not place bets.</i></p>"
+        + rec_html
+        + (_ladder_html(rows, liq) if rows else "")
+        + f"<p><i>This app does not place bets.</i></p>"
         + (f'<p><a href="{cfg.page_url}">Log your decision</a></p>'
            if cfg.page_url else "")
     )

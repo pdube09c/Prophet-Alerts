@@ -22,6 +22,13 @@ price_band_min = -350             # favorite ML band (inclusive)
 price_band_max = -100
 min_games_played = 6              # GP gate, both teams
 active_window_hours = [14, 24]    # ET hours to run the dense tick
+stake_target = 250                # stage-2 scaled stake target (capped by liquidity)
+# Reference stake ladder shown in every alert (informational, not the
+# recommendation). Must be a non-empty list of positive numbers, strictly
+# ascending — the config loader validates it and fails loudly otherwise.
+# CI (no settings.toml) can override with the STAKE_LADDER Variable, e.g.
+# STAKE_LADDER="100,500,1000,2000,3000,5000".
+stake_ladder = [100, 500, 1000, 2000, 3000, 5000]
 
 [email]
 # Sender identity is non-secret; the API key is a Secret (EMAIL_API_KEY).
