@@ -81,6 +81,18 @@ boundaries so the whole loop is tested with fakes (`tests/test_tick.py`,
    and host `web/` on any static CDN; put its URL in `PAGE_URL`.
 4. The workflows self-schedule (tick every 5 min in-window, daily stats before
    the slate, summary each morning). Start in `STAGE=paper`.
+5. **Smoke-test the alert path** before trusting the schedule. This forces one
+   synthetic `[SMOKE TEST]` alert through the real SendGrid path — fake team
+   names, no DB reads/writes, no live game required — so a failure points only
+   at the email path (key, sender verification, deliverability):
+   - **In CI (proves Secrets + email end-to-end):** Actions → **tick** → **Run
+     workflow** → toggle **force_sample** on. Runs `engine.alert --smoke` with
+     only the email env wired; scheduled ticks are unaffected.
+   - **Locally:** `python -m engine.alert --smoke` (needs `EMAILAPIKEY` plus
+     `EMAIL_FROM` / `EMAIL_TO` / `STAGE` in the env or `settings.toml`).
+
+   The send fails unless `EMAILAPIKEY` is set and `EMAIL_FROM` is a **verified
+   SendGrid sender** — which is exactly the misconfiguration this surfaces.
 
 ### Veto-layer reconciliation
 
