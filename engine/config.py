@@ -86,6 +86,7 @@ def alert_config() -> AlertConfig:
     email = cfg.get("email", {})
     page = cfg.get("page", {})
     nba = cfg.get("nba", {})
+    notify = cfg.get("notify", {})
 
     ladder_env = os.environ.get("STAKE_LADDER")
     ladder_raw = (_parse_stake_ladder_env(ladder_env) if ladder_env
@@ -98,4 +99,7 @@ def alert_config() -> AlertConfig:
         stage2_target=float(os.environ.get("STAKE_TARGET")
                             or nba.get("stake_target", 250.0)),
         stake_ladder=_validate_stake_ladder(ladder_raw),
+        # Best-effort push topic; empty -> push skipped, email still sends.
+        ntfy_topic=(os.environ.get("NTFY_TOPIC")
+                    or notify.get("ntfy_topic", "")).strip(),
     )

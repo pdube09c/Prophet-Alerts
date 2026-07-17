@@ -13,10 +13,12 @@ It is the `alert_fn` the tick injects.
 
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass
 from typing import Optional
 
 from engine import email as _email
+from engine import push as _push
 from engine.stake import is_paper, recommended_stake, to_win
 
 
@@ -32,6 +34,9 @@ class AlertConfig:
     # engine/config.py). Empty here so no stake numbers are hard-coded in this
     # module; build_alert renders the ladder section only when it's populated.
     stake_ladder: tuple = ()
+    # ntfy.sh push topic, supplied by the config loader (NTFY_TOPIC / settings).
+    # Empty -> the best-effort push is skipped; the email still sends.
+    ntfy_topic: str = ""
 
 
 @dataclass(frozen=True)
@@ -39,6 +44,10 @@ class Composed:
     subject: str
     text: str
     html: str
+    # Short ntfy push, composed from the same stake/win as the email so the two
+    # channels never disagree. Empty on a message composed without push fields.
+    push_title: str = ""
+    push_body: str = ""
 
 
 def _fmt_ml(ml: int) -> str:
@@ -187,16 +196,47 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
         + (f'<p><a href="{cfg.page_url}">Log your decision</a></p>'
            if cfg.page_url else "")
     )
-    return Composed(subject=subject, text=text, html=html)
+
+    # ntfy push — one short line reusing the SAME stake/win as the email above,
+    # so the attention-getter can never disagree with the detail channel. The
+    # title stays ASCII (it rides an HTTP header); the arrow lives in the body.
+    push_title = f"Prophet-Alerts: {cand.sport.upper()} survivor"
+    push_body = (
+        f"Survivor: {cand.favorite} {_fmt_ml(cand.entry_ml)} over {cand.dog}"
+        f" | Stake ({tag}): ${stake:,.2f} → win ${win:,.2f}"
+        f" | details in email")
+    if marker:
+        push_title = f"[{marker}] {push_title}"
+        push_body = f"{marker} — {push_body}"
+
+    return Composed(subject=subject, text=text, html=html,
+                    push_title=push_title, push_body=push_body)
+
+
+def _fire_push(cfg: AlertConfig, msg: Composed, pusher) -> None:
+    """Fire the ntfy push, best-effort. Skipped when no topic is configured.
+    ANY failure (network error, ntfy down, bad topic) is caught, logged, and
+    swallowed so the push can NEVER block or crash the alert — by the time we
+    are here the email has already been sent, and it is the source of truth."""
+    if not cfg.ntfy_topic:
+        return
+    try:
+        pusher(cfg.ntfy_topic, msg.push_title, msg.push_body)
+    except Exception as exc:  # noqa: BLE001 — best-effort channel, never propagate
+        print(f"[ntfy] push failed (email already sent): {exc!r}",
+              file=sys.stderr)
 
 
 def send_alert(cand, cfg: AlertConfig, *, sender=_email.send,
-               marker: Optional[str] = None) -> None:
-    """Compose and send. `sender` is injected for tests; `marker` tags a
-    synthetic smoke-test message (see build_alert)."""
+               pusher=_push.send, marker: Optional[str] = None) -> None:
+    """Compose and send the alert. Email is the source of truth and is sent
+    FIRST; the ntfy push is best-effort and fired AFTER (see _fire_push), so an
+    ntfy problem can never affect email delivery. `sender`/`pusher` are injected
+    for tests; `marker` tags a synthetic smoke-test message (see build_alert)."""
     msg = build_alert(cand, cfg, marker=marker)
     sender(cfg.email_from, cfg.email_to, msg.subject,
            html=msg.html, text=msg.text)
+    _fire_push(cfg, msg, pusher)
 
 
 # --- smoke test --------------------------------------------------------------

@@ -35,6 +35,14 @@ stake_ladder = [100, 500, 1000, 2000, 3000, 5000]
 to = ""
 from = ""
 
+[notify]
+# ntfy.sh push topic — a short "go look" attention-getter fired alongside the
+# detail email. Use a LONG RANDOM string: the topic is effectively a shared
+# secret (anyone who knows it can read or publish to it), so pick something
+# unguessable and regenerate it if it ever leaks. Leave empty to disable the
+# push (the email still sends). CI: set the NTFY_TOPIC Variable instead.
+ntfy_topic = ""
+
 [page]
 # Public URL of the static selection page (the link in alerts).
 url = ""

@@ -152,3 +152,85 @@ def test_validate_stake_ladder_rejects_malformed(bad):
 def test_validate_stake_ladder_accepts_and_normalizes():
     assert _validate_stake_ladder([100, 500, 1000]) == (100.0, 500.0, 1000.0)
     assert _validate_stake_ladder(list(DEFAULT_STAKE_LADDER)) == DEFAULT_STAKE_LADDER
+
+
+# --- ntfy push ---------------------------------------------------------------
+
+def _push_cfg(stage="stage1", topic="secret-topic"):
+    return AlertConfig(stage=stage, email_from="from@x", email_to="to@y",
+                       page_url="https://page", stake_ladder=DEFAULT_STAKE_LADDER,
+                       ntfy_topic=topic)
+
+
+def test_push_body_reuses_stage_stake_and_is_short():
+    # Push reflects the SAME stage-based stake/win as the email.
+    msg = build_alert(_cand(ml=-150, liq=1234.0), _push_cfg("stage1"))
+    assert msg.push_title == "Prophet-Alerts: NBA survivor"
+    assert "Boston Celtics -150 over Miami Heat" in msg.push_body
+    assert "Stake (STAGE1): $100.00" in msg.push_body
+    assert "win $65.33" in msg.push_body            # same 0.98 haircut as email
+    assert "details in email" in msg.push_body
+    assert msg.push_body.count("\n") <= 1           # one or two lines, no ladder
+    assert "Reference ladder" not in msg.push_body
+
+
+def test_push_paper_shows_zero_stake():
+    msg = build_alert(_cand(), _push_cfg("paper"))
+    assert "Stake (PAPER): $0.00" in msg.push_body
+
+
+def test_push_smoke_marker_is_unmistakable():
+    msg = build_alert(_cand(), _push_cfg("stage1"), marker="SMOKE TEST")
+    assert msg.push_title.startswith("[SMOKE TEST]")
+    assert msg.push_body.startswith("SMOKE TEST")
+
+
+def test_send_alert_sends_email_first_then_push():
+    calls = []
+
+    def fake_sender(sender, to, subject, *, html, text):
+        calls.append(("email", subject))
+
+    def fake_pusher(topic, title, body):
+        calls.append(("push", topic, title, body))
+
+    send_alert(_cand(ml=-150, liq=1234.0), _push_cfg("stage1"),
+               sender=fake_sender, pusher=fake_pusher)
+    assert [c[0] for c in calls] == ["email", "push"]     # email strictly first
+    _, topic, title, body = calls[1]
+    assert topic == "secret-topic"
+    assert title == "Prophet-Alerts: NBA survivor"
+    assert "Stake (STAGE1): $100.00" in body
+
+
+def test_push_skipped_when_no_topic():
+    cfg = AlertConfig(stage="paper", email_from="from@x", email_to="to@y",
+                      page_url="https://page")          # ntfy_topic defaults ""
+    sent = {}
+    pushed = {}
+
+    def fake_sender(*a, **k):
+        sent["ok"] = True
+
+    def fake_pusher(*a, **k):
+        pushed["ok"] = True
+
+    send_alert(_cand(), cfg, sender=fake_sender, pusher=fake_pusher)
+    assert sent.get("ok") is True                         # email still sent
+    assert pushed.get("ok") is None                       # push skipped, no error
+
+
+def test_failing_push_does_not_block_email_or_crash():
+    # THE critical guarantee: an unreachable/failing ntfy POST must neither
+    # prevent the email nor raise out of send_alert.
+    sent = {}
+
+    def fake_sender(*a, **k):
+        sent["ok"] = True
+
+    def boom_pusher(topic, title, body):
+        raise RuntimeError("ntfy unreachable")
+
+    send_alert(_cand(), _push_cfg("stage1"), sender=fake_sender,
+               pusher=boom_pusher)                         # must NOT raise
+    assert sent.get("ok") is True                          # email went out anyway
