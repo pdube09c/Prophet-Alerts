@@ -34,13 +34,14 @@ jobs:
       - name: force sample alert (smoke test)
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.force_sample }}
         env:
-          # DB-free path: only the email config is needed — no Supabase / Odds keys.
+          # DB-free path: only the email + push config is needed — no Supabase / Odds keys.
           EMAILAPIKEY: ${{ secrets.EMAILAPIKEY }}
           STAGE: ${{ vars.STAGE }}
           EMAIL_FROM: ${{ vars.EMAIL_FROM }}
           EMAIL_TO: ${{ vars.EMAIL_TO }}
           PAGE_URL: ${{ vars.PAGE_URL }}
           STAKE_TARGET: ${{ vars.STAKE_TARGET }}
+          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
         run: python -m engine.alert --smoke
       - name: run tick
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.force_sample) }}
@@ -55,4 +56,5 @@ jobs:
           EMAIL_TO: ${{ vars.EMAIL_TO }}
           PAGE_URL: ${{ vars.PAGE_URL }}
           STAKE_TARGET: ${{ vars.STAKE_TARGET }}
+          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
         run: python -m engine.tick
