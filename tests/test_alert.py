@@ -234,3 +234,75 @@ def test_failing_push_does_not_block_email_or_crash():
     send_alert(_cand(), _push_cfg("stage1"), sender=fake_sender,
                pusher=boom_pusher)                         # must NOT raise
     assert sent.get("ok") is True                          # email went out anyway
+
+
+# --- seeded smoke (DB round trip) --------------------------------------------
+
+def test_seed_candidate_clears_page_filter_and_is_marked():
+    # The page only renders survivors with tip_time > now - 3h, so the seed's
+    # tip MUST be in the future, and it must be unmistakably synthetic.
+    from engine.alert import _seed_candidate
+
+    cand = _seed_candidate()
+    assert cand.game.commence_time > datetime.now(UTC)     # clears tip>now-3h
+    assert cand.game.game_id.startswith("SMOKE-TEST:")
+    assert "SMOKE-TEST" in cand.favorite and "SMOKE-TEST" in cand.dog
+
+
+def test_seed_survivor_row_is_prefixed_and_pre_alerted():
+    # Written with alerted=True so a real tick never re-alerts the synthetic
+    # row, and carrying the SMOKE-TEST: game_id prefix that teardown keys on.
+    from engine.alert import _seed_candidate, _seed_survivor_row
+
+    row = _seed_survivor_row(_seed_candidate())
+    assert row["alerted"] is True
+    assert row["game_id"].startswith("SMOKE-TEST:")
+
+
+def test_seed_smoke_writes_survivor_before_sending_alert():
+    from engine.alert import _seed_smoke
+
+    events = []
+
+    class FakeDB:
+        def upsert_survivor(self, row):
+            events.append(("survivor", row))
+
+    def fake_sender(sender, to, subject, *, html, text):
+        events.append(("email", subject))
+
+    def fake_pusher(topic, title, body):
+        events.append(("push", topic))
+
+    _seed_smoke(db=FakeDB(), sender=fake_sender, pusher=fake_pusher)
+
+    kinds = [e[0] for e in events]
+    assert kinds[0] == "survivor"                 # DB row written FIRST
+    assert "email" in kinds and kinds.index("survivor") < kinds.index("email")
+    row = events[0][1]
+    assert row["alerted"] is True
+    assert row["game_id"].startswith("SMOKE-TEST:")
+    subject = next(e[1] for e in events if e[0] == "email")
+    assert subject.startswith("[SEED SMOKE]")     # unmistakable marker
+
+
+def test_seed_smoke_clean_scopes_strictly_to_smoke_rows():
+    # THE safety guarantee: teardown must key survivors on the SMOKE-TEST:
+    # game_id PREFIX (never team names alone) and bets on the exact synthetic
+    # team names — so a real row can never be deleted.
+    from engine.alert import _seed_smoke_clean
+
+    calls = []
+
+    class FakeDB:
+        def delete(self, table, *, params, returning=False):
+            calls.append((table, params))
+            return []
+
+    _seed_smoke_clean(db=FakeDB())
+
+    surv = next(p for t, p in calls if t == "survivors")
+    assert surv["game_id"].startswith("like.SMOKE-TEST:")   # prefix, not name
+    bets = next(p for t, p in calls if t == "bets")
+    assert bets["favorite"].startswith("eq.SMOKE-TEST")
+    assert bets["dog"].startswith("eq.SMOKE-TEST")          # both names pinned

@@ -102,6 +102,23 @@ boundaries so the whole loop is tested with fakes (`tests/test_tick.py`,
    The send fails unless `EMAILAPIKEY` is set and `EMAIL_FROM` is a **verified
    SendGrid sender** — which is exactly the misconfiguration this surfaces.
 
+6. **Test the bets-logging round trip** with the seeded-smoke mode. Unlike
+   `--smoke` (which is DB-free), this **writes to Supabase**: it inserts one
+   synthetic survivor and sends its alert, so you can click the email link, see
+   the survivor render on the page, and Log a bet end-to-end.
+   - **Seed:** `python -m engine.alert --seed-smoke` — needs `SUPABASEURL` /
+     `SUPABASEKEY` (service_role) plus the email vars, and set **`PAGE_URL`** so
+     the email's "Log your decision" link points at your live page. The row is
+     written with a future tip (so it clears the page's `tip > now-3h` filter),
+     `alerted=True` (so a real tick won't re-alert it), and a `SMOKE-TEST:`
+     `game_id` prefix. Run it **locally** — the CI `force_sample` dispatch wires
+     only email config, not the DB secrets this needs.
+   - **Clean up:** `python -m engine.alert --seed-smoke-clean` — deletes every
+     seeded survivor (scoped strictly to the `SMOKE-TEST:` prefix) and any bets
+     logged against the synthetic teams. Nothing real is ever touched.
+   - **Scope:** this verifies the trip only **up to bet-insert**; it does *not*
+     test settlement/grading, because the Odds API has no scores for fake teams.
+
 ### Veto-layer reconciliation
 
 **Reconciliation result** (see `tests/test_veto_layers.py`):

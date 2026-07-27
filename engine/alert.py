@@ -239,12 +239,26 @@ def send_alert(cand, cfg: AlertConfig, *, sender=_email.send,
     _fire_push(cfg, msg, pusher)
 
 
-# --- smoke test --------------------------------------------------------------
-# `python -m engine.alert --smoke [--stage STAGE]` forces one sample alert
-# through the REAL SendGrid path using live config, so the whole compose ->
-# send -> inbox chain can be verified on demand, independent of the schedule
-# and the DB. --stage overrides ONLY the stake calc for that one run (in
-# memory) so stage1/stage2 sizing can be seen without touching the real STAGE.
+# --- smoke tests -------------------------------------------------------------
+# Two on-demand modes, both independent of the schedule:
+#
+#   --smoke [--stage S]       DB-FREE. Forces one sample alert through the REAL
+#                             SendGrid path using live config, so the whole
+#                             compose -> send -> inbox chain can be verified.
+#                             Never reads or writes Supabase.
+#
+#   --seed-smoke [--stage S]  WRITES TO THE DB. Seeds one synthetic survivor row
+#                             AND sends its alert, so the full bets-logging round
+#                             trip can be driven by hand (email link -> the page
+#                             renders the survivor -> you Log a bet). Verifies the
+#                             trip only up to bet-insert; it does NOT reach
+#                             settlement/grading (the Odds API has no scores for
+#                             fake teams). Needs SUPABASEURL/SUPABASEKEY.
+#
+#   --seed-smoke-clean        Removes every seeded synthetic row again.
+#
+# --stage overrides ONLY the stake calc for that one run (in memory) so
+# stage1/stage2 sizing can be seen without touching the real STAGE.
 
 def _smoke_candidate():
     """A synthetic, obviously-fake survivor. Built in memory — this path never
@@ -292,19 +306,138 @@ def _smoke(stage_override: Optional[str] = None) -> None:
           f"(stage={cfg.stage!r}, from={cfg.email_from!r})")
 
 
+# --- seeded smoke (writes to the DB) -----------------------------------------
+# The game_id prefix is the teardown key: every seeded survivor carries it, so
+# --seed-smoke-clean scopes strictly to synthetic rows and can never touch a
+# real game — even one that happens to share a team name. The team names are
+# SMOKE-TEST-marked too (they render on the page, and bets have no game_id
+# column, so teardown matches bets on these unmistakably-synthetic names).
+_SEED_GAME_ID_PREFIX = "SMOKE-TEST:"
+_SEED_GAME_ID = f"{_SEED_GAME_ID_PREFIX}SEED@SEED"
+_SEED_FAVORITE = "SMOKE-TEST Favorite"
+_SEED_DOG = "SMOKE-TEST Underdog"
+
+
+def _seed_candidate():
+    """A synthetic survivor whose tip is ~2h out so it clears the page's
+    `tip_time > now - 3h` filter and actually renders. Team names + game_id are
+    SMOKE-TEST-marked so it's unmistakable on the page and cleanly removable."""
+    from datetime import datetime, timedelta, timezone
+    from sports.base import Candidate, Game
+
+    tip = datetime.now(timezone.utc) + timedelta(hours=2)
+    game_date = tip.date().isoformat()
+    game = Game(sport="nba", game_id=_SEED_GAME_ID, game_date=game_date,
+                commence_time=tip, home=_SEED_FAVORITE, away=_SEED_DOG)
+    return Candidate(sport="nba", game=game, favorite=_SEED_FAVORITE,
+                     dog=_SEED_DOG, entry_ml=-150, liquidity=1234.0,
+                     entry_time_actual=tip)
+
+
+def _seed_survivor_row(cand) -> dict:
+    """The survivor row a seed writes. `alerted=True` so a real tick sees it as
+    already-alerted and never re-alerts this synthetic row."""
+    return {
+        "sport": cand.sport, "game_date": cand.game.game_date,
+        "game_id": cand.game.game_id, "favorite": cand.favorite,
+        "dog": cand.dog, "entry_ml": cand.entry_ml,
+        "liquidity": cand.liquidity,
+        "tip_time": cand.game.commence_time.isoformat(), "alerted": True,
+    }
+
+
+def _seed_smoke(stage_override: Optional[str] = None, *, db=None,
+                sender=_email.send, pusher=_push.send) -> None:
+    """Seed one synthetic survivor into the hosted DB AND send its alert, so the
+    full bets-logging round trip can be driven by hand: the email link -> the
+    page renders the seeded survivor -> you Log a bet.
+
+    Unlike --smoke this WRITES to Supabase (needs SUPABASEURL/SUPABASEKEY). The
+    survivor row is written FIRST (so it's present the instant the email link is
+    clicked) with alerted=True, and carries the SMOKE-TEST: game_id prefix so
+    --seed-smoke-clean can remove it. It does NOT test settlement/grading — the
+    Odds API has no scores for fake teams — so the trip is verified only up to
+    bet-insert.  `db`/`sender`/`pusher` are injected for tests; they default to
+    the real DB module and the live email/ntfy sinks.
+    """
+    from dataclasses import replace
+    from engine import db as _real_db  # local import: avoids import cycle
+    from engine.config import alert_config
+
+    db = db or _real_db
+    cfg = alert_config()
+    if stage_override is not None:
+        norm = stage_override.strip().lower()
+        if norm not in _SMOKE_STAGES:
+            raise SystemExit(
+                f"--stage must be one of {'|'.join(_SMOKE_STAGES)}; "
+                f"got {stage_override!r}")
+        cfg = replace(cfg, stage=norm)  # in-memory only; real STAGE untouched
+
+    cand = _seed_candidate()
+    db.upsert_survivor(_seed_survivor_row(cand))  # DB write BEFORE the email
+    send_alert(cand, cfg, marker="SEED SMOKE", sender=sender, pusher=pusher)
+
+    page = cfg.page_url or "(PAGE_URL not set — the email link will be dead)"
+    tip = cand.game.commence_time.strftime("%Y-%m-%d %H:%M UTC")
+    print(
+        "[SEED SMOKE] wrote 1 synthetic survivor + sent its alert\n"
+        f"  survivor : {cand.favorite} {_fmt_ml(cand.entry_ml)} vs {cand.dog}\n"
+        f"  game_id  : {cand.game.game_id}  (tip {tip}, alerted=True)\n"
+        f"  stage    : {cfg.stage!r}\n"
+        f"  page     : {page}\n"
+        "  NOTE: verifies the round trip only up to bet-insert — it does NOT\n"
+        "        test settlement/grading (no Odds API scores for fake teams).\n"
+        "  Clean up when done:  python -m engine.alert --seed-smoke-clean")
+
+
+def _seed_smoke_clean(*, db=None) -> None:
+    """Remove every seeded synthetic row. Survivors are scoped STRICTLY by the
+    SMOKE-TEST: game_id prefix (a real game never carries it); bets have no
+    game_id column, so they're matched on the exact synthetic team names, which
+    likewise can never belong to a real game. `db` is injected for tests."""
+    from engine import db as _real_db
+
+    db = db or _real_db
+    survivors = db.delete(
+        "survivors", params={"game_id": f"like.{_SEED_GAME_ID_PREFIX}*"},
+        returning=True)
+    bets = db.delete(
+        "bets", params={"favorite": f"eq.{_SEED_FAVORITE}",
+                        "dog": f"eq.{_SEED_DOG}"},
+        returning=True)
+    print(f"[SEED SMOKE CLEAN] removed {len(survivors)} survivor(s) "
+          f"and {len(bets)} bet(s) (SMOKE-TEST rows only).")
+
+
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
         prog="python -m engine.alert",
-        description="Force a synthetic [SMOKE TEST] alert through SendGrid.")
-    parser.add_argument("--smoke", action="store_true",
-                        help="send one synthetic alert via the real email path")
+        description="Force a synthetic alert / seed the DB round trip.")
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--smoke", action="store_true",
+                      help="DB-free: send one synthetic alert via the real "
+                           "email path")
+    mode.add_argument("--seed-smoke", action="store_true", dest="seed_smoke",
+                      help="seed a synthetic survivor into the DB + send its "
+                           "alert (WRITES to Supabase; needs SUPABASEURL/"
+                           "SUPABASEKEY) so the page round trip can be driven "
+                           "by hand")
+    mode.add_argument("--seed-smoke-clean", action="store_true",
+                      dest="seed_smoke_clean",
+                      help="delete every seeded synthetic survivor + bet "
+                           "(SMOKE-TEST rows only)")
     parser.add_argument("--stage", metavar="STAGE", default=None,
                         help="override the stake-calc stage for this run only "
-                             "(paper|stage1|stage2); defaults to live config")
+                             "(paper|stage1|stage2); defaults to live config. "
+                             "Ignored by --seed-smoke-clean")
     args = parser.parse_args()
 
-    if not args.smoke:
-        parser.error("nothing to do — pass --smoke")
-    _smoke(stage_override=args.stage)
+    if args.seed_smoke_clean:
+        _seed_smoke_clean()
+    elif args.seed_smoke:
+        _seed_smoke(stage_override=args.stage)
+    else:
+        _smoke(stage_override=args.stage)

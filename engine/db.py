@@ -87,6 +87,18 @@ def update(table: str, patch: dict, *, params: dict) -> None:
     resp.raise_for_status()
 
 
+def delete(table: str, *, params: dict, returning: bool = False):
+    """DELETE rows matching `params`. ALWAYS pass a filter — PostgREST would
+    otherwise clear the whole table. With `returning=True` the deleted rows are
+    returned so callers can report how many were removed."""
+    prefer = "return=representation" if returning else "return=minimal"
+    resp = requests.delete(_rest(table), params=params,
+                           headers=_headers({"Prefer": prefer}),
+                           timeout=_TIMEOUT)
+    resp.raise_for_status()
+    return resp.json() if returning else None
+
+
 # --- typed helpers used by the engine ----------------------------------------
 
 def append_snapshots(rows: list[SnapshotRow]) -> None:
