@@ -45,8 +45,9 @@ per-environment so it can differ by sport later. `NTFY_TOPIC` (mirrors
 "go look" notification fired alongside the detail email — use a **long random
 string** (the topic is effectively a shared secret; regenerate it if it leaks),
 and leave it empty to disable the push (the email still sends). The static page's client values
-(`SUPABASE_URL`, the **anon** key, `STAGE`) live in git-ignored `web/config.js` —
-the `service_role` key never touches the browser.
+(`SUPABASE_URL`, the **anon** key, `STAGE`) live in `docs/config.js` — committed
+so GitHub Pages can serve it, and holding the anon key only; the `service_role`
+key never touches the browser.
 
 ## Staged rollout (discipline gates, §11)
 
@@ -69,7 +70,7 @@ anything else was built.
 | 12.2  | Sport contract + NBA adapters + layers  | `sports/base.py`, `sports/nba.py`, `engine/veto.py` |
 | 12.3  | Rolling tick (append, in-window, alert) | `engine/tick.py` |
 | 12.4  | Stake table + alert + email             | `engine/stake.py`, `engine/alert.py`, `engine/email.py` |
-| 12.5  | Static selection page (anon-key, RLS)   | `web/index.html`, `web/config.example.js` |
+| 12.5  | Static selection page (anon-key, RLS)   | `docs/index.html`, `docs/config.example.js` |
 | 12.6  | Daily stats + settle + morning summary  | `engine/daily_stats.py`, `engine/settle.py`, `engine/summary.py` |
 | 12.7  | The three GitHub Actions workflows      | `.github/workflows/{tick,daily-stats,morning-summary}.yml` |
 | 12.8  | Stage 0 paper loop (offline e2e)        | `tests/test_end_to_end.py` |
@@ -85,8 +86,10 @@ boundaries so the whole loop is tested with fakes (`tests/test_tick.py`,
 
 1. Apply `config/schema.sql` once in the Supabase SQL editor (tables + RLS).
 2. Set the four Secrets + non-secret Variables above in the GitHub repo.
-3. Copy `web/config.example.js` → `web/config.js`, fill in the anon key + URL,
-   and host `web/` on any static CDN; put its URL in `PAGE_URL`.
+3. The selection page is served by **GitHub Pages from `/docs`** (Settings →
+   Pages → source: `main`, folder `/docs`). `docs/config.js` is already
+   committed with the anon key + URL (`docs/config.example.js` is the template);
+   edit it there if those change. Put the published Pages URL in `PAGE_URL`.
 4. The workflows self-schedule (tick every 5 min in-window, daily stats before
    the slate, summary each morning). Start in `STAGE=paper`.
 5. **Smoke-test the alert path** before trusting the schedule. This forces one

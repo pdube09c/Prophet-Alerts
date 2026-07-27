@@ -1,5 +1,6 @@
-// Client config for the static selection page. COPY to web/config.js
-// (git-ignored) and fill in. These are the *public* client values:
+// Client config for the static selection page. Template for docs/config.js
+// (which is committed so GitHub Pages can serve it). These are the *public*
+// client values:
 //   - SUPABASE_URL       : your Supabase project URL (same as SUPABASEURL).
 //   - SUPABASE_ANON_KEY  : the Supabase ANON (publishable) key — NOT the
 //                          service_role key. RLS restricts it to reading

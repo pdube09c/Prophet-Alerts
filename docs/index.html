@@ -137,7 +137,7 @@ function card(s) {
 async function load() {
   if (!CFG.SUPABASE_URL || !CFG.SUPABASE_ANON_KEY) {
     listEl.innerHTML = `<p class="empty err">Config missing. Copy
-      web/config.example.js to web/config.js and fill in the anon key + URL.</p>`;
+      docs/config.example.js to docs/config.js and fill in the anon key + URL.</p>`;
     return;
   }
   try {
