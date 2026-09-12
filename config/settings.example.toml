@@ -30,6 +30,19 @@ stake_target = 250                # stage-2 scaled stake target (capped by liqui
 # STAKE_LADDER="100,500,1000,2000,3000,5000".
 stake_ladder = [100, 500, 1000, 2000, 3000, 5000]
 
+[cfb]
+# College football. The universe filters, the three conditions and the CFBD
+# as-of join are in sports/cfb.py; only the fire window is tunable here.
+#
+# Minutes before KICKOFF at which a game is evaluated and alerted. 1440 = T-24h:
+# a day out the T-48h retail-extend window has closed, so the veto reads a
+# complete trajectory. CI can override with the CFB_ENTRY_OFFSET_MINUTES
+# Variable.
+entry_offset_minutes = 1440
+# NOTE: stake_target and stake_ladder are NOT repeated here. Stake sizing is
+# sport-agnostic and shared with NBA (see [nba] above) — CFB reuses the exact
+# same ladder and three-stage sizing rather than forking it.
+
 [email]
 # Sender identity is non-secret; the API key is a Secret (EMAIL_API_KEY).
 to = ""

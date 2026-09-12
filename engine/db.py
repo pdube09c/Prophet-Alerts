@@ -144,6 +144,19 @@ def is_alerted(sport: str, game_id: str) -> bool:
     return bool(rows) and all(r["alerted"] for r in rows)
 
 
+def get_alerted_game_ids(sport: str) -> set:
+    """Every game_id already marked alerted for this sport, in ONE round trip.
+
+    The tick needs this for its self-healing selection. Asking per game costs a
+    request per game, which is fine for a 10-game NBA slate but not for a full
+    NCAAF board of 60-100 listings on an hourly tick. Only alerted rows are
+    returned, so the result stays small regardless of board size.
+    """
+    rows = select("survivors", params={
+        "sport": f"eq.{sport}", "alerted": "is.true", "select": "game_id"})
+    return {r["game_id"] for r in rows}
+
+
 def upsert_survivor(row: dict) -> None:
     insert("survivors", [row], upsert=True, on_conflict="sport,game_id")
 

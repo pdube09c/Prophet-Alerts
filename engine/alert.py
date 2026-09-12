@@ -116,6 +116,30 @@ def _ladder_html(rows, liq: str) -> str:
         f'{head}{body}</table>{note}')
 
 
+def _annotations_text(annotations) -> list[str]:
+    """Sport-supplied context, rendered verbatim above the recommendation.
+
+    CFB uses this for its required data-maturity flag. Empty for NBA, in which
+    case the block is omitted entirely and the message is byte-identical to
+    what it was before annotations existed.
+    """
+    if not annotations:
+        return []
+    width = max(len(label) for label, _ in annotations)
+    return ["", *[f"{label:<{width}} : {value}" for label, value in annotations]]
+
+
+def _annotations_html(annotations) -> str:
+    if not annotations:
+        return ""
+    rows = "".join(
+        f'<tr><td style="padding:1px 12px 1px 0;color:#555;white-space:nowrap">'
+        f'<b>{label}</b></td><td style="padding:1px 0;color:#555">{value}</td></tr>'
+        for label, value in annotations)
+    return ('<table style="border-collapse:collapse;font-size:13px;'
+            f'margin:10px 0">{rows}</table>')
+
+
 def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Composed:
     """Compose the alert message for one surviving candidate. Pure.
 
@@ -130,7 +154,11 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
     tip = cand.game.commence_time.strftime("%Y-%m-%d %H:%M UTC")
     liq = f"${cand.liquidity:,.0f}" if cand.liquidity is not None else "n/a"
 
-    subject = f"[{tag}] {cand.favorite} {_fmt_ml(cand.entry_ml)} vs {cand.dog}"
+    sport = cand.sport.upper()
+    # Sport in the subject (not just the body) so NBA and CFB alerts are
+    # distinguishable at a glance in the inbox and in notification previews.
+    subject = (f"[{tag}] [{sport}] {cand.favorite} {_fmt_ml(cand.entry_ml)} "
+               f"vs {cand.dog}")
     banner_txt: list[str] = []
     banner_html = ""
     if marker:
@@ -158,6 +186,7 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
         f"Underdog : {cand.dog}",
         f"Tip      : {tip}",
         f"Liquidity: {liq}",
+        *_annotations_text(cand.annotations),
         "",
         *rec_block,
         *ladder_block,
@@ -190,6 +219,7 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
         f"<tr><td><b>Tip</b></td><td>{tip}</td></tr>"
         f"<tr><td><b>Liquidity</b></td><td>{liq}</td></tr>"
         f"</table>"
+        + _annotations_html(cand.annotations)
         + rec_html
         + (_ladder_html(rows, liq) if rows else "")
         + f"<p><i>This app does not place bets.</i></p>"
@@ -202,7 +232,7 @@ def build_alert(cand, cfg: AlertConfig, *, marker: Optional[str] = None) -> Comp
     # title stays ASCII (it rides an HTTP header); the arrow lives in the body.
     push_title = f"Prophet-Alerts: {cand.sport.upper()} survivor"
     push_body = (
-        f"Survivor: {cand.favorite} {_fmt_ml(cand.entry_ml)} over {cand.dog}"
+        f"[{sport}] {cand.favorite} {_fmt_ml(cand.entry_ml)} over {cand.dog}"
         f" | Stake ({tag}): ${stake:,.2f} → win ${win:,.2f}"
         f" | details in email")
     if marker:
@@ -260,7 +290,20 @@ def send_alert(cand, cfg: AlertConfig, *, sender=_email.send,
 # --stage overrides ONLY the stake calc for that one run (in memory) so
 # stage1/stage2 sizing can be seen without touching the real STAGE.
 
-def _smoke_candidate():
+# A CFB smoke alert must exercise the SAME compose->SendGrid->inbox chain as
+# NBA, including the maturity annotations that only CFB carries, so the whole
+# CFB alert path is proven at $0 before a live alert can fire. The synthetic
+# annotations below mirror the shape sports.cfb.maturity() produces.
+_SMOKE_ANNOTATIONS = {
+    "cfb": (
+        ("Data maturity", "as-of through Week 2: 2 games of data"),
+        ("Stats confidence", "noise-regime (validated from Week 5+)"),
+        ("Retail-extend", "complete — 14 snapshots through T-48h"),
+    ),
+}
+
+
+def _smoke_candidate(sport: str = "nba"):
     """A synthetic, obviously-fake survivor. Built in memory — this path never
     reads from or writes to Supabase, isolating the email path from the DB."""
     from datetime import datetime, timezone
@@ -269,18 +312,29 @@ def _smoke_candidate():
     # Fixed, plainly-not-real tip time + fake team names so it can never be
     # confused with a live selection on a real slate.
     tip = datetime(2026, 1, 1, 0, 0, tzinfo=timezone.utc)
-    game = Game(sport="nba", game_id="SMOKE-TEST:TST@TST",
+    game = Game(sport=sport, game_id="SMOKE-TEST:TST@TST",
                 game_date="2026-01-01", commence_time=tip,
                 home="Test Favorite", away="Test Underdog")
-    return Candidate(sport="nba", game=game, favorite="Test Favorite",
+    return Candidate(sport=sport, game=game, favorite="Test Favorite",
                      dog="Test Underdog", entry_ml=-150, liquidity=1234.0,
-                     entry_time_actual=tip)
+                     entry_time_actual=tip,
+                     annotations=_SMOKE_ANNOTATIONS.get(sport, ()))
 
 
 _SMOKE_STAGES = ("paper", "stage1", "stage2")
+_SMOKE_SPORTS = ("nba", "cfb")
 
 
-def _smoke(stage_override: Optional[str] = None) -> None:
+def _norm_smoke_sport(sport: Optional[str]) -> str:
+    norm = (sport or "nba").strip().lower()
+    if norm not in _SMOKE_SPORTS:
+        raise SystemExit(
+            f"--sport must be one of {'|'.join(_SMOKE_SPORTS)}; got {sport!r}")
+    return norm
+
+
+def _smoke(stage_override: Optional[str] = None,
+           sport: Optional[str] = None) -> None:
     """Send one [SMOKE TEST] alert via SendGrid using the live alert config
     (STAGE/EMAIL_FROM/EMAIL_TO/... from the env or settings.toml).
 
@@ -301,8 +355,9 @@ def _smoke(stage_override: Optional[str] = None) -> None:
                 f"got {stage_override!r}")
         cfg = replace(cfg, stage=norm)  # in-memory only; real STAGE untouched
 
-    send_alert(_smoke_candidate(), cfg, marker="SMOKE TEST")
-    print(f"[SMOKE TEST] alert sent to {cfg.email_to!r} "
+    key = _norm_smoke_sport(sport)
+    send_alert(_smoke_candidate(key), cfg, marker="SMOKE TEST")
+    print(f"[SMOKE TEST] {key.upper()} alert sent to {cfg.email_to!r} "
           f"(stage={cfg.stage!r}, from={cfg.email_from!r})")
 
 
@@ -318,7 +373,7 @@ _SEED_FAVORITE = "SMOKE-TEST Favorite"
 _SEED_DOG = "SMOKE-TEST Underdog"
 
 
-def _seed_candidate():
+def _seed_candidate(sport: str = "nba"):
     """A synthetic survivor whose tip is ~2h out so it clears the page's
     `tip_time > now - 3h` filter and actually renders. Team names + game_id are
     SMOKE-TEST-marked so it's unmistakable on the page and cleanly removable."""
@@ -327,11 +382,12 @@ def _seed_candidate():
 
     tip = datetime.now(timezone.utc) + timedelta(hours=2)
     game_date = tip.date().isoformat()
-    game = Game(sport="nba", game_id=_SEED_GAME_ID, game_date=game_date,
+    game = Game(sport=sport, game_id=_SEED_GAME_ID, game_date=game_date,
                 commence_time=tip, home=_SEED_FAVORITE, away=_SEED_DOG)
-    return Candidate(sport="nba", game=game, favorite=_SEED_FAVORITE,
+    return Candidate(sport=sport, game=game, favorite=_SEED_FAVORITE,
                      dog=_SEED_DOG, entry_ml=-150, liquidity=1234.0,
-                     entry_time_actual=tip)
+                     entry_time_actual=tip,
+                     annotations=_SMOKE_ANNOTATIONS.get(sport, ()))
 
 
 def _seed_survivor_row(cand) -> dict:
@@ -347,7 +403,8 @@ def _seed_survivor_row(cand) -> dict:
 
 
 def _seed_smoke(stage_override: Optional[str] = None, *, db=None,
-                sender=_email.send, pusher=_push.send) -> None:
+                sender=_email.send, pusher=_push.send,
+                sport: Optional[str] = None) -> None:
     """Seed one synthetic survivor into the hosted DB AND send its alert, so the
     full bets-logging round trip can be driven by hand: the email link -> the
     page renders the seeded survivor -> you Log a bet.
@@ -374,7 +431,7 @@ def _seed_smoke(stage_override: Optional[str] = None, *, db=None,
                 f"got {stage_override!r}")
         cfg = replace(cfg, stage=norm)  # in-memory only; real STAGE untouched
 
-    cand = _seed_candidate()
+    cand = _seed_candidate(_norm_smoke_sport(sport))
     db.upsert_survivor(_seed_survivor_row(cand))  # DB write BEFORE the email
     send_alert(cand, cfg, marker="SEED SMOKE", sender=sender, pusher=pusher)
 
@@ -429,6 +486,10 @@ if __name__ == "__main__":
                       dest="seed_smoke_clean",
                       help="delete every seeded synthetic survivor + bet "
                            "(SMOKE-TEST rows only)")
+    parser.add_argument("--sport", metavar="SPORT", default="nba",
+                        help="which sport's synthetic candidate to send "
+                             "(nba|cfb); cfb also exercises the data-maturity "
+                             "annotations. Ignored by --seed-smoke-clean")
     parser.add_argument("--stage", metavar="STAGE", default=None,
                         help="override the stake-calc stage for this run only "
                              "(paper|stage1|stage2); defaults to live config. "
@@ -438,6 +499,6 @@ if __name__ == "__main__":
     if args.seed_smoke_clean:
         _seed_smoke_clean()
     elif args.seed_smoke:
-        _seed_smoke(stage_override=args.stage)
+        _seed_smoke(stage_override=args.stage, sport=args.sport)
     else:
-        _smoke(stage_override=args.stage)
+        _smoke(stage_override=args.stage, sport=args.sport)

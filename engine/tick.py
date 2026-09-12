@@ -30,7 +30,6 @@ from typing import Callable, Optional
 from engine import db as _db
 from engine.veto import evaluate_all
 from sports.base import Game, VetoContext
-from sports.nba import team_stats_view
 
 
 # --- pure planning core (no IO — unit-tested directly) -----------------------
@@ -62,7 +61,11 @@ def plan_tick(games: list[Game], now: datetime, entry_offset_minutes: int,
 
 
 def _asof_date(game_date: str) -> str:
-    """Point-in-time stats are as of D-1 relative to the game's ET date."""
+    """Default point-in-time stats key: D-1 relative to the game's ET date.
+
+    Used for sports that don't override `stats_asof_key` (NBA). CFB addresses
+    its stats by the end of the PRIOR WEEK instead — see sports/cfb.py.
+    """
     d = datetime.fromisoformat(game_date).date() - timedelta(days=1)
     return d.isoformat()
 
@@ -89,8 +92,10 @@ def run_tick(sport, *, now: Optional[datetime] = None, db=_db,
 
     games = sport.todays_games(now)
 
-    # 1) append a fresh odds snapshot (idempotent).
-    snaps = sport.pull_odds_snapshot()
+    # 1) append a fresh odds snapshot (idempotent). Stamped with this tick's
+    # `now` so every row from one tick shares one timestamp — the veto layers
+    # build their trajectories by grouping on it.
+    snaps = sport.pull_odds_snapshot(now)
     db.append_snapshots(snaps)
     summary["snapshots"] = len(snaps)
 
@@ -104,7 +109,7 @@ def run_tick(sport, *, now: Optional[datetime] = None, db=_db,
     stats_cache: dict = {}
 
     for game in due:
-        stats_view = _stats_view(db, sport.key, game.game_date, stats_cache)
+        stats_view = _stats_view(db, sport, game, stats_cache)
         snapshots = db.get_snapshots(sport.key, game.game_date, game.game_id)
         cand = sport.build_candidates(game, snapshots, stats_view)
         if cand is None:
@@ -141,17 +146,41 @@ def run_tick(sport, *, now: Optional[datetime] = None, db=_db,
 
 
 def _alerted_ids(db, sport_key: str, games: list[Game]) -> set:
-    """The set of today's game_ids already marked alerted in the DB."""
+    """The set of game_ids already marked alerted in the DB.
+
+    Prefers the bulk query (one round trip). A full NCAAF board is 60-100
+    listings and this runs every tick, so the per-game fallback below — kept for
+    DB fakes that predate the bulk helper — would cost a request per game.
+    """
+    bulk = getattr(db, "get_alerted_game_ids", None)
+    if bulk is not None:
+        alerted = bulk(sport_key)
+        return {g.game_id for g in games if g.game_id in alerted}
     return {g.game_id for g in games if db.is_alerted(sport_key, g.game_id)}
 
 
-def _stats_view(db, sport_key: str, game_date: str, cache: dict) -> dict:
-    """Cached per-day team-stat view (as of D-1) assembled from tall stat rows."""
-    asof = _asof_date(game_date)
+def _stats_view(db, sport, game: Game, cache: dict) -> dict:
+    """Cached point-in-time team-stat view assembled from tall stat rows.
+
+    Both the as-of key and the flattening are delegated to the sport (see the
+    `stats_asof_key` / `stats_view` hooks on sports.base.Sport), so the engine
+    stays sport-agnostic. A sport that defines neither gets the NBA-shaped
+    defaults: as of D-1, flattened field -> value.
+    """
+    asof_key = getattr(sport, "stats_asof_key", None)
+    asof = asof_key(game) if asof_key else _asof_date(game.game_date)
     if asof not in cache:
-        rows = db.get_stats(sport_key, asof)
-        cache[asof] = team_stats_view(_as_statrows(rows))
+        rows = db.get_stats(sport.key, asof)
+        flatten = getattr(sport, "stats_view", None) or _default_stats_view
+        cache[asof] = flatten(_as_statrows(rows))
     return cache[asof]
+
+
+def _default_stats_view(stat_rows) -> dict:
+    view: dict = {}
+    for r in stat_rows:
+        view.setdefault(r.team, {})[r.field] = r.value
+    return view
 
 
 class _Row:
@@ -172,18 +201,41 @@ def _log_only_alert(cand, stage: str) -> None:
           f"{cand.entry_ml} vs {cand.dog} — {cand.game.game_id}")
 
 
+def build_sport(key: str):
+    """Construct a sport plug-in by key. The engine is sport-agnostic; this is
+    the one place that maps a CLI/workflow argument to a concrete plug-in."""
+    key = key.strip().lower()
+    if key == "nba":
+        from sports.nba import NBA
+        return NBA()
+    if key == "cfb":
+        from engine.config import cfb_entry_offset_minutes
+        from sports.cfb import CFB
+        return CFB(entry_offset_minutes=cfb_entry_offset_minutes())
+    raise SystemExit(f"unknown sport {key!r}; expected one of: nba, cfb")
+
+
 if __name__ == "__main__":
     # Production entry point (invoked by .github/workflows/tick.yml). Wires the
     # real email alert + configured stage; secrets come from the environment.
+    #
+    # One tick per sport. CFB shares this loop unchanged: its accumulate job is
+    # the snapshot append every tick makes, and its fire job is the same
+    # alert-window selection keyed off the sport's entry_offset_minutes.
+    import argparse
     import json
 
     from engine import config
     from engine.alert import send_alert
-    from sports.nba import NBA
+
+    parser = argparse.ArgumentParser(prog="python -m engine.tick")
+    parser.add_argument("--sport", default="nba",
+                        help="which sport to tick (nba|cfb); default nba")
+    args = parser.parse_args()
 
     cfg = config.alert_config()
     summary = run_tick(
-        NBA(), stage=cfg.stage,
+        build_sport(args.sport), stage=cfg.stage,
         alert_fn=lambda cand, stage: send_alert(cand, cfg),
     )
-    print(json.dumps(summary, indent=2))
+    print(json.dumps({"sport": args.sport, **summary}, indent=2))

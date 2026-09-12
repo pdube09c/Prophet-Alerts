@@ -30,8 +30,12 @@ def _money(v: float) -> str:
 
 
 def build_summary(date: str, stage: str, settled_bets: list[dict],
-                  vetoed: list[dict]) -> Composed:
-    """Compose the summary from graded bets + settled vetoed rows. Pure."""
+                  vetoed: list[dict], sport_key: str = "nba") -> Composed:
+    """Compose the summary from graded bets + settled vetoed rows. Pure.
+
+    One summary per sport, so `sport_key` tags the subject and heading and NBA
+    and CFB mornings never blur into one another in the inbox.
+    """
     placed = [b for b in settled_bets if b.get("placed")]
     wins = sum(1 for b in placed if b["result"] == "win")
     losses = sum(1 for b in placed if b["result"] == "loss")
@@ -44,10 +48,11 @@ def build_summary(date: str, stage: str, settled_bets: list[dict],
     veto_cost = sum(1 for v in settled_vetoes if v["favwin_actual"])
 
     tag = "PAPER" if is_paper(stage) else stage.upper()
-    subject = (f"[{tag}] {date} — {wins}-{losses}, {_money(pnl)}"
-               if placed else f"[{tag}] {date} — no bets placed")
+    sport = sport_key.upper()
+    subject = (f"[{tag}] [{sport}] {date} — {wins}-{losses}, {_money(pnl)}"
+               if placed else f"[{tag}] [{sport}] {date} — no bets placed")
 
-    lines = [f"Morning summary — {date} ({tag})", ""]
+    lines = [f"Morning summary — {sport} {date} ({tag})", ""]
     if placed:
         lines.append(f"Record: {wins}-{losses}   Net P&L: {_money(pnl)}")
         lines.append("")
@@ -66,7 +71,7 @@ def build_summary(date: str, stage: str, settled_bets: list[dict],
         f"<td>${b['stake_chosen']:,.0f}</td><td>{_money(b.get('net_pnl') or 0.0)}</td></tr>"
         for b in placed)
     html = (
-        f"<h2>Morning summary — {date} <small>({tag})</small></h2>"
+        f"<h2>Morning summary — {sport} {date} <small>({tag})</small></h2>"
         + (f"<p><b>Record:</b> {wins}-{losses} &nbsp; "
            f"<b>Net P&amp;L:</b> {_money(pnl)}</p>"
            f"<table><tr><th>Result</th><th>Favorite</th><th>Stake</th>"
@@ -83,12 +88,21 @@ def run(sport_key: str = "nba", game_date: str | None = None, *, sender=None) ->
     cfg = config.alert_config()
     settled = db.get_settled_bets(sport_key, date)
     vetoed = db.get_vetoed(sport_key, date)
-    msg = build_summary(date, cfg.stage, settled, vetoed)
+    msg = build_summary(date, cfg.stage, settled, vetoed, sport_key)
     send = sender or _email.send
     send(cfg.email_from, cfg.email_to, msg.subject, html=msg.html, text=msg.text)
-    return {"game_date": date, "bets": len(settled), "vetoed": len(vetoed)}
+    return {"sport": sport_key, "game_date": date,
+            "bets": len(settled), "vetoed": len(vetoed)}
 
 
 if __name__ == "__main__":
+    import argparse
     import json
-    print(json.dumps(run(), indent=2))
+
+    parser = argparse.ArgumentParser(prog="python -m engine.summary")
+    parser.add_argument("--sport", default="nba",
+                        help="which sport to summarize (nba|cfb)")
+    parser.add_argument("--game-date", dest="game_date", default=None,
+                        help="ET date YYYY-MM-DD; default = yesterday ET")
+    args = parser.parse_args()
+    print(json.dumps(run(args.sport, args.game_date), indent=2))

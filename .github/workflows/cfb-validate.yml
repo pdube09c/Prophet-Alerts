@@ -1,0 +1,32 @@
+# CFB pre-flight validation — run this BEFORE enabling live CFB alerts, and any
+# time the crosswalk or the FBS membership might have shifted (a new season, a
+# reclassifier, an unfamiliar name on the board).
+#
+# Read-only: it pulls from CFBD, the Odds API and Supabase but writes nothing.
+# Fails the job if any check fails, so a red run is a hard "do not go live".
+name: cfb-validate
+on:
+  workflow_dispatch:
+    inputs:
+      skip_db:
+        description: "Skip the Supabase trajectory check (checks 1-2 only)"
+        type: boolean
+        default: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: validate CFB path
+        env:
+          ODDSAPIKEY: ${{ secrets.ODDSAPIKEY }}
+          CFBDAPIKEY: ${{ secrets.CFBDAPIKEY }}
+          SUPABASEURL: ${{ secrets.SUPABASEURL }}
+          SUPABASEKEY: ${{ secrets.SUPABASEKEY }}
+        run: python -m tools.validate_cfb ${{ inputs.skip_db && '--skip-db' || '' }}

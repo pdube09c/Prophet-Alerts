@@ -28,6 +28,13 @@
     padding: 14px; margin-bottom: 12px;
   }
   .fav { font-size: 17px; font-weight: 700; }
+  /* Sport badge — NBA and CFB survivors share this list, so each card says
+     which sport it is. Colour is a second cue, never the only one. */
+  .sport { display: inline-block; font-size: 11px; font-weight: 700;
+           letter-spacing: .06em; padding: 2px 7px; border-radius: 4px;
+           vertical-align: 2px; margin-right: 6px; }
+  .sport-nba { background: #1d3f73; color: #dce9ff; }
+  .sport-cfb { background: #6b3410; color: #ffe6d0; }
   .ml { color: var(--accent); }
   .row { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px;
     color: var(--muted); font-size: 13px; }
@@ -96,11 +103,16 @@ function card(s) {
   const el = document.createElement("div");
   el.className = "card";
   const defStake = (CFG.STAGE === "stage1") ? 100 : (CFG.STAGE === "paper" ? 0 : "");
+  const sportKey = (s.sport || "").toLowerCase();
+  const sportLabel = sportKey ? sportKey.toUpperCase() : "?";
+  const sportClass = (sportKey === "nba" || sportKey === "cfb")
+    ? "sport-" + sportKey : "";
+  const startLabel = (sportKey === "cfb") ? "Kickoff" : "Tip";
   const liq = (s.liquidity != null) ? "$" + Number(s.liquidity).toLocaleString() : "n/a";
   el.innerHTML = `
-    <div class="fav">${s.favorite} <span class="ml">${fmtMl(s.entry_ml)}</span></div>
+    <div class="fav"><span class="sport ${sportClass}">${sportLabel}</span>${s.favorite} <span class="ml">${fmtMl(s.entry_ml)}</span></div>
     <div class="row"><span>Underdog</span><b>${s.dog}</b></div>
-    <div class="row"><span>Tip</span><b>${fmtTip(s.tip_time)}</b></div>
+    <div class="row"><span>${startLabel}</span><b>${fmtTip(s.tip_time)}</b></div>
     <div class="row"><span>Liquidity</span><b>${liq}</b></div>
     <div class="controls">
       <label class="stk">Stake $</label>
@@ -141,7 +153,9 @@ async function load() {
     return;
   }
   try {
-    const r = await rest("survivors?sport=eq.nba&order=tip_time.asc");
+    // Both sports share this page. The filter stays explicit rather than
+    // becoming "everything", so a future sport has to be added here knowingly.
+    const r = await rest("survivors?sport=in.(nba,cfb)&order=tip_time.asc");
     if (!r.ok) throw new Error("HTTP " + r.status);
     const rows = await r.json();
     const now = Date.now();
@@ -152,7 +166,15 @@ async function load() {
     } else {
       upcoming.forEach(s => listEl.appendChild(card(s)));
     }
-    footEl.textContent = `${upcoming.length} survivor(s) · updated ${new Date().toLocaleTimeString()}`;
+    const bySport = upcoming.reduce((acc, s) => {
+      const k = (s.sport || "?").toUpperCase();
+      acc[k] = (acc[k] || 0) + 1; return acc;
+    }, {});
+    const split = Object.keys(bySport).sort()
+      .map(k => `${bySport[k]} ${k}`).join(" · ");
+    footEl.textContent = `${upcoming.length} survivor(s)`
+      + (split ? ` (${split})` : "")
+      + ` · updated ${new Date().toLocaleTimeString()}`;
   } catch (e) {
     listEl.innerHTML = `<p class="empty err">Could not load survivors: ${e.message}</p>`;
   }
