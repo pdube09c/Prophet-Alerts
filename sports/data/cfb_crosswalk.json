@@ -245,7 +245,11 @@
     "Lehigh Mountain Hawks": "FCS",
     "Montana Grizzlies": "FCS",
     "North Dakota State Bison": "Mountain West",
-    "South Dakota State Jackrabbits": "FCS"
+    "South Dakota State Jackrabbits": "FCS",
+    "Mercyhurst Lakers": "FCS",
+    "Sacred Heart Pioneers": "FCS",
+    "Southern Utah Thunderbirds": "FCS",
+    "West Georgia Wolves": "FCS"
   },
   "cfbd_to_canonical": {
     "Air Force": "Air Force Falcons",

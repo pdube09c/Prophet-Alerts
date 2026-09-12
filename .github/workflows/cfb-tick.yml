@@ -63,7 +63,7 @@ jobs:
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.force_sample) }}
         env:
           ODDSAPIKEY: ${{ secrets.ODDSAPIKEY }}
-          CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
+          CFBDAPIKEY: ${{ secrets.CFBDAPIKEY }}
           SUPABASEURL: ${{ secrets.SUPABASEURL }}
           SUPABASEKEY: ${{ secrets.SUPABASEKEY }}
           EMAILAPIKEY: ${{ secrets.EMAILAPIKEY }}

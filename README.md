@@ -26,7 +26,7 @@ production these are **GitHub Actions Secrets**:
 | Secret        | Use                                             |
 |---------------|-------------------------------------------------|
 | `ODDSAPIKEY`  | The Odds API key                                |
-| `CFBD_API_KEY` | CollegeFootballData key (CFB: FBS membership, as-of stats, calendar) |
+| `CFBDAPIKEY` | CollegeFootballData key (CFB: FBS membership, as-of stats, calendar) |
 | `SUPABASEURL` | Supabase project URL                            |
 | `SUPABASEKEY` | Supabase `service_role` key (workflow-side)     |
 | `EMAILAPIKEY` | Transactional email provider key (alerts/summary) |

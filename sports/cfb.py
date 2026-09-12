@@ -801,9 +801,9 @@ def _odds_api_get(path: str, **extra) -> list:
 
 def _cfbd_get(path: str, **params) -> list:
     import requests
-    key = os.environ.get("CFBD_API_KEY")
+    key = os.environ.get("CFBDAPIKEY")
     if not key:
-        raise RuntimeError("CFBD_API_KEY must be set in the environment.")
+        raise RuntimeError("CFBDAPIKEY must be set in the environment.")
     resp = requests.get(f"{_CFBD_BASE}/{path}", params=params,
                         headers={"Authorization": f"Bearer {key}",
                                  "Accept": "application/json"}, timeout=30)
