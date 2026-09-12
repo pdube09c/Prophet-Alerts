@@ -44,7 +44,13 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-
+      - name: debug key shape
+        env:
+          EMAILAPIKEY: ${{ secrets.EMAILAPIKEY }}
+        run: |
+          echo "Length: ${#EMAILAPIKEY}"
+          echo "Starts with SG.: $([[ "$EMAILAPIKEY" == SG.* ]] && echo yes || echo no)"
+          echo "Has whitespace: $([[ "$EMAILAPIKEY" =~ [[:space:]] ]] && echo yes || echo no)"
       - name: force sample CFB alert (smoke test)
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.force_sample }}
         env:
