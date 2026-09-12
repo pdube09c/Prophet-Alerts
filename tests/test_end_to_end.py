@@ -195,4 +195,4 @@ def test_stage0_paper_loop(monkeypatch):
     msg = summary.build_summary(GAME_DATE, "paper",
                                 fake.get_settled_bets("nba", GAME_DATE),
                                 fake.get_vetoed("nba", GAME_DATE))
-    assert msg.subject == "[PAPER] 2026-01-10 — no bets placed"
+    assert msg.subject == "[PAPER] [NBA] 2026-01-10 — no bets placed"

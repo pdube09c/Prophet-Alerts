@@ -1,0 +1,80 @@
+# CFB rolling tick — the college-football heartbeat.
+#
+# Runs the SAME engine.tick as NBA, with the CFB plug-in. Two jobs fall out of
+# one invocation, exactly as the brief specifies:
+#
+#   accumulate  Every tick appends a fresh board-wide odds snapshot to Supabase.
+#               That accumulated per-book trajectory IS what the retail-extend
+#               veto reads later; there is no separate collector job.
+#   fire        Any game that has reached T-24h (CFB_ENTRY_OFFSET_MINUTES) and
+#               is not yet marked `alerted` is evaluated against the three
+#               conditions and, if it survives, alerted through the existing
+#               NBA alert path unchanged.
+#
+# Cadence: hourly, every day. Hourly is what the retail-extend veto's "sustained
+# across 2 consecutive hourly snapshots" rule assumes. Every day (not just
+# Saturday) because the accumulation window opens as soon as a game is listed,
+# and because weeknight MACtion kicks off Tue/Wed/Thu — the T-48h window is
+# kickoff-relative, so no day needs special-casing.
+#
+# Cost: ONE board-wide /odds pull per tick (~2 credits at markets=spreads,h2h);
+# todays_games and pull_odds_snapshot share the same cached payload.
+name: cfb-tick
+on:
+  schedule:
+    - cron: "5 * * * *"         # hourly, on the :05, every day
+  workflow_dispatch:
+    inputs:
+      force_sample:
+        description: "Send a synthetic [SMOKE TEST] CFB alert via SendGrid instead of running the tick (DB-free; proves the CFB compose->send->inbox path at $0)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: cfb-tick               # never overlap CFB ticks (NBA has its own group)
+  cancel-in-progress: false
+
+jobs:
+  cfb-tick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: force sample CFB alert (smoke test)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.force_sample }}
+        env:
+          # DB-free path: email + push config only — no Supabase / Odds / CFBD keys.
+          EMAILAPIKEY: ${{ secrets.EMAILAPIKEY }}
+          STAGE: ${{ vars.STAGE }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          EMAIL_TO: ${{ vars.EMAIL_TO }}
+          PAGE_URL: ${{ vars.PAGE_URL }}
+          STAKE_TARGET: ${{ vars.STAKE_TARGET }}
+          STAKE_LADDER: ${{ vars.STAKE_LADDER }}
+          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
+        run: python -m engine.alert --smoke --sport cfb
+
+      - name: run CFB tick
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.force_sample) }}
+        env:
+          ODDSAPIKEY: ${{ secrets.ODDSAPIKEY }}
+          CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
+          SUPABASEURL: ${{ secrets.SUPABASEURL }}
+          SUPABASEKEY: ${{ secrets.SUPABASEKEY }}
+          EMAILAPIKEY: ${{ secrets.EMAILAPIKEY }}
+          # Non-secret runtime config (GitHub Actions Variables, not Secrets):
+          STAGE: ${{ vars.STAGE }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          EMAIL_TO: ${{ vars.EMAIL_TO }}
+          PAGE_URL: ${{ vars.PAGE_URL }}
+          STAKE_TARGET: ${{ vars.STAKE_TARGET }}
+          STAKE_LADDER: ${{ vars.STAKE_LADDER }}
+          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
+          # Minutes before kickoff at which a CFB game fires. Default 1440 (T-24h).
+          CFB_ENTRY_OFFSET_MINUTES: ${{ vars.CFB_ENTRY_OFFSET_MINUTES }}
+        run: python -m engine.tick --sport cfb

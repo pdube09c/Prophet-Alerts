@@ -17,5 +17,8 @@ venv/
 # Node (static page tooling, if any)
 node_modules/
 
-# No on-disk app state — all state lives in the hosted DB (Design B §1)
-data/
+# No on-disk app state — all state lives in the hosted DB (Design B §1).
+# Anchored to the repo root: this rule is about a top-level state directory, not
+# any directory named "data". sports/data/ holds the GENERATED but CHECKED-IN
+# CFB crosswalk, which CI depends on and must be committed.
+/data/

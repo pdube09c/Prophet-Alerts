@@ -73,6 +73,29 @@ def stage() -> str:
     return load().get("app", {}).get("stage", "paper")
 
 
+# CFB fires at T-24h by default (see sports.cfb.CFB). Overridable from
+# settings [cfb] entry_offset_minutes or the CFB_ENTRY_OFFSET_MINUTES Variable,
+# so the fire window can be retuned without a code change.
+DEFAULT_CFB_ENTRY_OFFSET_MINUTES = 24 * 60
+
+
+def cfb_entry_offset_minutes() -> int:
+    """Minutes before kickoff at which a CFB game is evaluated and alerted."""
+    raw = (os.environ.get("CFB_ENTRY_OFFSET_MINUTES")
+           or load().get("cfb", {}).get("entry_offset_minutes")
+           or DEFAULT_CFB_ENTRY_OFFSET_MINUTES)
+    try:
+        value = int(raw)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(
+            f"cfb entry_offset_minutes must be an integer number of minutes; "
+            f"got {raw!r}") from exc
+    if value <= 0:
+        raise ValueError(
+            f"cfb entry_offset_minutes must be positive; got {value}")
+    return value
+
+
 def alert_config() -> AlertConfig:
     """Alert settings from settings.toml, with NON-SECRET env overrides.
 
@@ -88,6 +111,9 @@ def alert_config() -> AlertConfig:
     nba = cfg.get("nba", {})
     notify = cfg.get("notify", {})
 
+    # The stake ladder and stage-2 target are SPORT-AGNOSTIC — the same sizing
+    # serves NBA and CFB. They live under [nba] for historical reasons; the key
+    # name is not a scoping decision and CFB deliberately does not fork them.
     ladder_env = os.environ.get("STAKE_LADDER")
     ladder_raw = (_parse_stake_ladder_env(ladder_env) if ladder_env
                   else nba.get("stake_ladder", DEFAULT_STAKE_LADDER))

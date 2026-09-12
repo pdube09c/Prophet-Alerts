@@ -268,6 +268,18 @@ class NBA:
     entry_offset_minutes = 115          # 1:55 before tip
     active_window_hours = (14, 24)      # ET hours games approach tip (bound runner minutes)
 
+    # Point-in-time stats hooks (sports.base.Sport). Declared explicitly rather
+    # than left to the engine's generic fallback: `team_stats_view` canonicalizes
+    # franchise names (nba_api's "LA Clippers" -> the Odds API's "Los Angeles
+    # Clippers"), which a plain flatten would not do, silently breaking the stat
+    # lookup for that team.
+    stats_view = staticmethod(team_stats_view)
+
+    def stats_asof_key(self, game) -> str:
+        """NBA stats are as of D-1 relative to the game's ET date."""
+        from datetime import date, timedelta
+        return (date.fromisoformat(game.game_date) - timedelta(days=1)).isoformat()
+
     def veto_layers(self) -> list[VetoLayer]:
         # Ordered; the engine vetoes if any fires.
         return [
@@ -286,9 +298,9 @@ class NBA:
     def todays_games(self, date) -> list[Game]:
         return _games_from_events(_odds_api_get("events"))
 
-    def pull_odds_snapshot(self) -> list[SnapshotRow]:
+    def pull_odds_snapshot(self, taken_at=None) -> list[SnapshotRow]:
         """Current odds for today's slate -> raw per-book SnapshotRows."""
-        taken_at = datetime.now(timezone.utc).replace(microsecond=0)
+        taken_at = (taken_at or datetime.now(timezone.utc)).replace(microsecond=0)
         return _snapshots_from_odds(_odds_api_get("odds", markets="spreads,h2h"),
                                     taken_at)
 
@@ -300,6 +312,16 @@ class NBA:
         imported lazily so this module imports without it (tests don't need it).
         """
         return _pull_nba_stats(str(asof_date))
+
+    # Lookback for the /scores fetch. NBA games are final the same night, so
+    # yesterday's slate is always inside a 2-day window.
+    scores_days_from = 2
+
+    def fetch_scores(self, *, days_from: int = 2) -> dict:
+        """Completed final scores from The Odds API /scores (basketball_nba)."""
+        from engine.settle import scores_from_events
+        return scores_from_events(
+            _odds_api_get("scores", daysFrom=days_from), _et_date)
 
     def settle(self, bet, final_score) -> Result:
         """favorite wins if its final score is higher; P&L per the stake table."""

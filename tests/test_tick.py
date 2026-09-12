@@ -98,7 +98,7 @@ class FakeSport:
     def todays_games(self, now):
         return self._games
 
-    def pull_odds_snapshot(self):
+    def pull_odds_snapshot(self, taken_at=None):
         return [object(), object()]          # 2 rows; content irrelevant here
 
     def build_candidates(self, game, snapshots, stats):

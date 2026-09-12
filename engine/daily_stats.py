@@ -21,6 +21,12 @@ def _yesterday_et() -> str:
 
 
 def run(sport=None, asof_date: str | None = None) -> dict:
+    """Pull one sport's point-in-time stats as of `asof_date` and upsert them.
+
+    Sport-agnostic: each plug-in decides what "as of" means for it (NBA: the
+    prior day; CFB: through the prior completed week) and returns tall StatRows
+    keyed accordingly. This function just persists whatever it is handed.
+    """
     sport = sport or NBA()
     asof = asof_date or _yesterday_et()
     rows = sport.pull_stats(asof)
@@ -33,5 +39,17 @@ def run(sport=None, asof_date: str | None = None) -> dict:
 
 
 if __name__ == "__main__":
+    import argparse
     import json
-    print(json.dumps(run(), indent=2))
+
+    from engine.tick import build_sport
+
+    parser = argparse.ArgumentParser(prog="python -m engine.daily_stats")
+    parser.add_argument("--sport", default="nba",
+                        help="which sport's stats to pull (nba|cfb)")
+    parser.add_argument("--asof-date", dest="asof_date", default=None,
+                        help="as-of date YYYY-MM-DD; default = yesterday ET")
+    args = parser.parse_args()
+
+    print(json.dumps(run(build_sport(args.sport), asof_date=args.asof_date),
+                     indent=2))

@@ -89,7 +89,7 @@ def test_build_summary_record_pnl_and_audit():
         {"favwin_actual": None},                                    # unsettled -> ignored
     ]
     msg = summary.build_summary("2026-01-10", "stage1", settled, vetoed)
-    assert msg.subject == "[STAGE1] 2026-01-10 — 1-1, -$51.00"
+    assert msg.subject == "[STAGE1] [NBA] 2026-01-10 — 1-1, -$51.00"
     assert "Record: 1-1" in msg.text
     assert "Net P&L: -$51.00" in msg.text
     assert "2 lost (veto saved us), 1 won (veto cost us)" in msg.text
@@ -99,5 +99,5 @@ def test_build_summary_record_pnl_and_audit():
 
 def test_build_summary_no_bets():
     msg = summary.build_summary("2026-01-10", "paper", settled_bets=[], vetoed=[])
-    assert msg.subject == "[PAPER] 2026-01-10 — no bets placed"
+    assert msg.subject == "[PAPER] [NBA] 2026-01-10 — no bets placed"
     assert "No bets were placed." in msg.text

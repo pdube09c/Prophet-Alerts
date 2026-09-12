@@ -71,6 +71,11 @@ class Candidate:
     entry_ml: int            # ProphetX favorite moneyline at eval snapshot
     liquidity: Optional[float]
     entry_time_actual: datetime
+    # Optional (label, value) pairs the alert renders verbatim beneath the
+    # header — a sport may annotate a candidate with context the reader must
+    # see. CFB uses it for the required data-maturity flag; NBA leaves it empty,
+    # and the renderer skips the block entirely when it is.
+    annotations: tuple = ()
 
 
 @dataclass(frozen=True)
@@ -132,8 +137,16 @@ class Sport(ABC):
         """Games with commence_time, home, away."""
 
     @abstractmethod
-    def pull_odds_snapshot(self) -> list[SnapshotRow]:
-        """Fetch current odds for today's slate -> rows to append to the DB."""
+    def pull_odds_snapshot(self, taken_at: Optional[datetime] = None
+                           ) -> list[SnapshotRow]:
+        """Fetch current odds for today's slate -> rows to append to the DB.
+
+        `taken_at` stamps every returned row. The tick passes its own `now` so
+        one tick's rows share a single timestamp — the veto layers group
+        snapshots BY that timestamp to build per-poll trajectories, so a tick
+        whose rows straddled two stamps would fragment the series. Defaults to
+        the current UTC time when called outside a tick.
+        """
 
     @abstractmethod
     def pull_stats(self, asof_date) -> list[StatRow]:
@@ -150,3 +163,26 @@ class Sport(ABC):
     @abstractmethod
     def settle(self, bet: Bet, final_score) -> Result:
         """Grade a logged bet: win/loss + realized P&L."""
+
+    # --- point-in-time stats addressing (overridable; NBA-shaped defaults) ---
+    # The tick looks stats up by an `asof` key and flattens the tall rows into a
+    # per-team view. Both were NBA assumptions baked into engine/tick.py; they
+    # are hooks now so a sport whose stats are addressed differently (CFB: as-of
+    # through the PRIOR WEEK, not the prior day) plugs in without engine rework.
+
+    def stats_asof_key(self, game: Game) -> str:
+        """The `stats.asof_date` key holding this game's point-in-time stats.
+
+        Default: D-1 relative to the game's ET date (NBA). CFB overrides this
+        with the end date of the prior week (endWeek = N-1).
+        """
+        from datetime import date, timedelta
+        d = date.fromisoformat(game.game_date) - timedelta(days=1)
+        return d.isoformat()
+
+    def stats_view(self, stat_rows) -> dict:
+        """Flatten tall stat rows into team_name -> {field: value}."""
+        view: dict = {}
+        for r in stat_rows:
+            view.setdefault(r.team, {})[r.field] = r.value
+        return view

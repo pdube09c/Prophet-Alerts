@@ -26,6 +26,7 @@ production these are **GitHub Actions Secrets**:
 | Secret        | Use                                             |
 |---------------|-------------------------------------------------|
 | `ODDSAPIKEY`  | The Odds API key                                |
+| `CFBD_API_KEY` | CollegeFootballData key (CFB: FBS membership, as-of stats, calendar) |
 | `SUPABASEURL` | Supabase project URL                            |
 | `SUPABASEKEY` | Supabase `service_role` key (workflow-side)     |
 | `EMAILAPIKEY` | Transactional email provider key (alerts/summary) |
@@ -36,7 +37,7 @@ config lives in `config/settings.example.toml` → `config/settings.toml`.
 **Non-secret runtime config** (safe to expose) can also come from GitHub Actions
 **Variables** (the `vars` context, *not* Secrets), which override the file so CI
 needs no `settings.toml`: `STAGE`, `EMAIL_FROM`, `EMAIL_TO`, `PAGE_URL`,
-`STAKE_TARGET`, `STAKE_LADDER`, `NTFY_TOPIC`. `STAKE_LADDER` (comma-separated,
+`STAKE_TARGET`, `STAKE_LADDER`, `NTFY_TOPIC`, `CFB_ENTRY_OFFSET_MINUTES`. `STAKE_LADDER` (comma-separated,
 e.g. `100,500,1000,2000,3000,5000`) sets the reference stake ladder shown in each
 alert; it mirrors `[nba] stake_ladder` in `settings.toml`, is validated on load
 (non-empty, positive, strictly ascending — malformed values fail loudly), and is
@@ -60,9 +61,10 @@ The active stage lives in `config/settings.toml [app] stage`.
 
 ## Build status
 
-The full §12 build sequence is wired and unit-tested (23 tests green,
+The full §12 build sequence is wired and unit-tested (158 tests green,
 `python -m pytest tests/`). The veto-layer gate (§12.2) was proven **before**
-anything else was built.
+anything else was built. **NBA and CFB both ship** — see
+[College football (CFB)](#college-football-cfb).
 
 | §     | Piece                                   | Files |
 |-------|-----------------------------------------|-------|
@@ -72,8 +74,9 @@ anything else was built.
 | 12.4  | Stake table + alert + email             | `engine/stake.py`, `engine/alert.py`, `engine/email.py` |
 | 12.5  | Static selection page (anon-key, RLS)   | `docs/index.html`, `docs/config.example.js` |
 | 12.6  | Daily stats + settle + morning summary  | `engine/daily_stats.py`, `engine/settle.py`, `engine/summary.py` |
-| 12.7  | The three GitHub Actions workflows      | `.github/workflows/{tick,daily-stats,morning-summary}.yml` |
+| 12.7  | The GitHub Actions workflows            | `.github/workflows/{tick,cfb-tick,daily-stats,morning-summary,cfb-validate}.yml` |
 | 12.8  | Stage 0 paper loop (offline e2e)        | `tests/test_end_to_end.py` |
+| —     | CFB plug-in (second sport)              | `sports/cfb.py`, `sports/data/cfb_crosswalk.json`, `tools/` |
 
 The tick is **idempotent and self-healing**: all state lives in the hosted DB
 (never on the ephemeral runner), and the `alerted` flag guarantees each survivor
@@ -162,3 +165,155 @@ The book veto ships provisional at 91.1% (see above and
 [`docs/book_veto_audit.md`](docs/book_veto_audit.md)). It runs at full fidelity
 forward on unrounded Odds API data; backtest parity is not a goal. Revisit only
 if the original book code or an earlier opening-line snapshot history surfaces.
+
+## College football (CFB)
+
+CFB is a **second sport plug-in**, not a second app. It adds a data source and
+evaluation logic; everything downstream of a surviving candidate — the stake
+ladder, the three-stage sizing, alert compose/send, the ntfy push, the
+bets-logging round trip, the selection page and settlement — is the
+sport-agnostic engine, reused unchanged.
+
+### The strategy
+
+Bet the **favorite moneyline on ProphetX** when every condition holds.
+
+**Universe**
+
+- **FBS vs FBS**, with membership from CFBD `/teams/fbs?year=YYYY` **at
+  runtime** — never hardcoded. Reclassifiers (North Dakota State, Sacramento
+  State in 2026) are picked up automatically and departures drop automatically;
+  a hardcoded list is what caused silent drops last season.
+- Favorite ML in **[-300, -100]** — nothing heavier than -300.
+- **Week 3+.** Week 5+ is the validated range, but Weeks 3-4 are **not gated
+  off**: they fire with an explicit data-maturity flag instead (below).
+
+**The three conditions** — the favorite must pass all three.
+
+| # | Layer | Vetoes when |
+|---|-------|-------------|
+| 1 | `stuff` | the underdog has a **top-quartile defensive stuff rate** across the as-of FBS population |
+| 2 | `retail-extend` | **>=2 of the 4 retail books** each show a *sustained* >=1pt move toward the favorite off **their own opener**, between listing and **T-48h** before kickoff, **and Pinnacle does not** show a >=1pt move over the same window |
+| 3 | `dog-SR` | the underdog's offensive **success rate does not exceed** the favorite's (strict `>`) |
+
+"Sustained" = the >=1pt condition holds across **2 consecutive hourly
+snapshots** — not a one-poll blip that reverts. The retail-extend window is
+**kickoff-relative**, so Saturday games and weeknight MACtion are handled by
+identical logic with no special-casing. (The veto is unvalidated on weeknight
+games — the 2025 sample was too thin — and runs there by explicit decision.)
+
+### Point-in-time stats (no lookahead)
+
+Stats are CFBD **as-of**, **garbage-time-excluded**, through the **prior week**:
+a week-N game is evaluated on `endWeek=N-1`.
+
+Two guards enforce this, and both **raise** — neither warns, and nothing catches
+them. A lookahead-contaminated evaluation stops the tick rather than quietly
+emitting an alert built on a leaked result.
+
+- `assert_no_lookahead(game_week, endweek)` checks the *arithmetic*. On its own
+  this is weak, because `stats_asof_key` derives `endweek` as `wk - 1` by
+  construction and so can never trip it; it bites only for a caller that
+  computes `endweek` independently (`tools/validate_cfb.py` does).
+- `assert_stats_are_asof(game_week, team_stats)` checks the *data*, and is the
+  one that actually fires. `pull_stats` stamps every row with the `endWeek` it
+  was pulled through, so this catches what the arithmetic cannot see: a mis-filed
+  as-of key, a backfill run with the wrong `endWeek`, a season-final pull written
+  over the weekly rows, or a shifted calendar boundary. It inspects **every team
+  in the view**, not just the two playing — one contaminated row would move the
+  stuff-rate quartile threshold and change the verdict on games it is not part
+  of. Week boundaries come from CFBD
+`/calendar?year=YYYY`, so a shifted Week 0 or a 15-week season needs no code
+change. CFBD's `nationalAverages` sentinel row is excluded from every quartile
+population.
+
+### The data-maturity flag
+
+Because alerts fire from Week 3 but the stats conditions are not reliable until
+~Week 5, **every CFB alert carries a maturity flag** so no alert overstates
+itself. It annotates; it never gates.
+
+```
+Data maturity    : as-of through Week 2: 2 games of data
+Stats confidence : noise-regime (validated from Week 5+)
+Retail-extend    : complete - 14 snapshots through T-48h
+```
+
+Games-of-data is counted from the CFBD schedule (so byes are handled) and
+reports the **thinner** of the two teams. `Retail-extend` is `complete` only
+when the T-48h window has actually closed *and* enough snapshots accumulated to
+judge a sustained move; otherwise `partial`, with the reason.
+
+### Pipeline
+
+Both jobs fall out of the **existing** self-healing rolling tick — nothing
+re-implements it (`.github/workflows/cfb-tick.yml`, hourly, every day):
+
+- **accumulate** — every tick appends the whole board's per-book spread + h2h
+  snapshot to Supabase. That accumulated trajectory *is* what the retail-extend
+  veto reads later; there is no separate collector. One board-wide `/odds` pull
+  per tick (~2 credits) — `todays_games` and `pull_odds_snapshot` share one
+  cached payload.
+- **fire** — a game reaching **T-24h** (`CFB_ENTRY_OFFSET_MINUTES`, default
+  1440) is evaluated against the three conditions and, surviving, alerted
+  exactly once through the existing alert path.
+
+### Team-name crosswalks
+
+The hand-verified name mappings live in the sibling repo
+`odds-backtest-verification` (`src/ncaaf-crosswalk.ts`, `src/cfbd-crosswalk.ts`),
+which remains the **single source of truth**. Because CI has no access to that
+repo, they are **compiled** into `sports/data/cfb_crosswalk.json`:
+
+```bash
+python -m tools.gen_cfb_crosswalk          # regenerate after editing the .ts
+python -m tools.gen_cfb_crosswalk --check  # fail if the checked-in JSON is stale
+```
+
+`tests/test_cfb.py` re-runs the generator whenever the source repo is present
+and fails on divergence, so the copy cannot drift silently.
+
+**Exact match only — no fuzzy matching, no prefix fallback.** A prefix rule
+would be actively wrong here ("Ohio" is the Bobcats, "Ohio State" the Buckeyes).
+The hard errors sit where they matter:
+
+- an unmapped CFBD **FBS** school raises in `CFB.fbs()`, so the universe can
+  never silently shrink;
+- an unresolvable **board** name is announced loudly on stderr and that one game
+  is skipped — raising there would let a single unknown FCS opponent suppress
+  alerts for the entire board;
+- `tools/validate_cfb.py` **fails** on any unresolvable name and is the
+  pre-flight gate.
+
+### Before going live
+
+```bash
+# 1. All three checks: crosswalk resolution, the CFBD as-of join, and the
+#    retail-extend veto reading the accumulated Supabase trajectory.
+python -m tools.validate_cfb            # --skip-db for checks 1-2 only
+
+# 2. Synthetic CFB alert through the REAL SendGrid path. DB-free, $0.
+python -m engine.alert --smoke --sport cfb
+
+# 3. Seeded round trip: writes a synthetic survivor, sends its alert, and the
+#    page link renders it so a bet can be logged by hand.
+python -m engine.alert --seed-smoke --sport cfb
+python -m engine.alert --seed-smoke-clean
+```
+
+`cfb-validate` and `cfb-tick` (with `force_sample: true`) run the first two from
+the Actions tab, proving the CI secrets and the CFB email path.
+
+### Running CFB by hand
+
+```bash
+python -m engine.tick --sport cfb          # one accumulate + fire tick
+python -m engine.daily_stats --sport cfb   # as-of stats, last completed week
+python -m engine.settle --sport cfb        # grade yesterday's CFB bets
+python -m engine.summary --sport cfb       # the CFB morning summary
+```
+
+Alerts, pushes and summaries are **sport-tagged** (`[PAPER] [CFB] ...`) and the
+selection page shows a per-card sport badge, so NBA and CFB never blur together.
+The `bets` table has carried a `sport` column since the original schema, so CFB
+bets are tracked separately with no migration.
