@@ -21,8 +21,6 @@
 # todays_games and pull_odds_snapshot share the same cached payload.
 name: cfb-tick
 on:
-  schedule:
-    - cron: "5 * * * *"         # hourly, on the :05, every day
   workflow_dispatch:
     inputs:
       force_sample:
