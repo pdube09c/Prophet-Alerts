@@ -7,12 +7,6 @@
 # in their alert window, so off-slate ticks are cheap.
 name: tick
 on:
-  schedule:
-    # Overnight hourly (5 snapshots): 10pm/11pm ET prev day, 12am/1am/2am ET game day
-    - cron: "0 3-7 * * *"      # UTC 03:00, 04:00, 05:00, 06:00, 07:00
-    # Dense half-hour (23 snapshots): 8:00am–7:00pm ET game day, every 30 min
-    - cron: "0,30 13-23 * * *"  # UTC 13:00 through 23:30, on the hour and half-hour
-    - cron: "0 0 * * *"         # UTC 00:00 = 7:00pm ET (final dense snapshot)
   workflow_dispatch:
     inputs:
       force_sample:
