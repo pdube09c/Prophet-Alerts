@@ -12,5 +12,5 @@
 window.APP_CONFIG = {
   SUPABASE_URL: "https://fmcvbwlsvpzfdckydtzf.supabase.co",
   SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtY3Zid2xzdnB6ZmRja3lkdHpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMjA4MjMsImV4cCI6MjA5NTU5NjgyM30.ME5DocYZiTz-xU_IUSvFA7jgVCBqt-ozcak8V6uNHWA",
-  STAGE: "paper",
+  STAGE: "stage2",
 };
