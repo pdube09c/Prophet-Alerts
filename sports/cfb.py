@@ -62,6 +62,11 @@ RETAIL_BOOKS = ("williamhill_us", "betmgm", "fanduel", "draftkings")
 PINNACLE = "pinnacle"
 NON_PROPHETX_BOOKS = (PINNACLE,) + RETAIL_BOOKS
 
+# The opening favorite is read from the first snapshot at which at least this
+# many distinct non-ProphetX books have posted a spread. One early line from a
+# single book (often a stale or outlying number) must not fix the favorite.
+MIN_OPEN_BOOKS = 3
+
 # Favorite ML band, inclusive. ML >= -300 -> exclude favorites heavier than -300.
 PRICE_BAND = (-300, -100)
 
@@ -526,8 +531,9 @@ def build_candidate(game: Game, snapshots: list, team_stats: dict, *,
 
     Universe: FBS vs FBS (runtime membership), week >= ALERT_FROM_WEEK, and a
     ProphetX favorite ML inside PRICE_BAND. The favorite is the negative-
-    consensus side across the non-ProphetX books at the EARLIEST snapshot, so
-    the designation is fixed at listing and cannot flip on late movement.
+    consensus side across the non-ProphetX books at the EARLIEST snapshot where
+    at least MIN_OPEN_BOOKS of them have posted, so the designation is fixed at
+    listing and cannot flip on late movement.
 
     None here means "not a candidate" (a real, expected outcome). It never means
     "name did not resolve" — that raises UnmappedTeamError.
@@ -552,18 +558,23 @@ def build_candidate(game: Game, snapshots: list, team_stats: dict, *,
     assert_stats_are_asof(game_week, team_stats)
 
     times = sorted({s.taken_at for s in snapshots})
-    first, last = times[0], times[-1]
+    last = times[-1]
     # The evaluation instant is the latest snapshot — the tick stamps its rows
     # with its own `now`, so `last` IS this tick's clock. Anchoring the maturity
     # flag to it (rather than to a fresh wall-clock read) keeps the annotation
     # describing exactly the data it was computed from.
     now = now or last
 
-    first_points = [s.home_point for s in snapshots
-                    if s.taken_at == first and s.book in NON_PROPHETX_BOOKS
-                    and s.home_point is not None]
-    if not first_points:
-        return _skip(game, "no opening spreads from non-ProphetX books")
+    first_points = None
+    for t in times:
+        by_book = {s.book: s.home_point for s in snapshots
+                   if s.taken_at == t and s.book in NON_PROPHETX_BOOKS
+                   and s.home_point is not None}
+        if len(by_book) >= MIN_OPEN_BOOKS:
+            first_points = list(by_book.values())
+            break
+    if first_points is None:
+        return _skip(game, "fewer than 3 books have posted a spread")
     consensus_home = statistics.median(first_points)
     if consensus_home < 0:
         favorite, dog = game.home, game.away

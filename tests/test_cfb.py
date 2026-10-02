@@ -451,6 +451,33 @@ class TestBuildCandidate:
     def test_pickem_has_no_favorite(self):
         assert self._build(self._snaps(home_point=0.0)) is None
 
+    def _px_row(self, home_point=-7.0):
+        return snap(cfb.PROPHETX, 24 * 60, home_point,
+                    home_ml=-150, away_ml=+130, home_limit=100.0)
+
+    def test_one_early_book_does_not_set_the_favorite(self):
+        """One book opens with the opposite sign; the favorite is the side the
+        first three-book snapshot agrees on, not the lone early line."""
+        rows = [snap("fanduel", 96 * 60, +2.5)]               # lone early line: away
+        rows += [snap(bk, 72 * 60, -3.0)                      # three books: home
+                 for bk in ("pinnacle", "betmgm", "draftkings")]
+        rows.append(self._px_row())
+        c = self._build(rows)
+        assert c is not None and c.favorite == FAV and c.dog == DOG
+
+    def test_two_books_only_is_skipped(self, capsys):
+        rows = [snap(bk, h * 60, -7.0) for bk in ("pinnacle", "fanduel")
+                for h in (72, 24)]
+        rows.append(self._px_row())
+        assert self._build(rows) is None
+        assert "fewer than 3 books have posted a spread" in capsys.readouterr().out
+
+    def test_three_books_median_zero_is_a_pickem(self, capsys):
+        rows = [snap("pinnacle", 72 * 60, -1.5), snap("betmgm", 72 * 60, 0.0),
+                snap("draftkings", 72 * 60, +1.5), self._px_row()]
+        assert self._build(rows) is None
+        assert "opened as a pick'em" in capsys.readouterr().out
+
     def test_no_prophetx_price_means_no_candidate(self):
         rows = [r for r in self._snaps() if r.book != cfb.PROPHETX]
         assert self._build(rows) is None
