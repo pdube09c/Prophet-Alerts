@@ -857,3 +857,74 @@ class TestOddsAdapter:
         sport.todays_games(None)
         sport.pull_odds_snapshot()
         assert calls == ["odds"]
+
+
+# --- CFBD retries ------------------------------------------------------------
+
+class TestCfbdRetry:
+    """_cfbd_get retries stalls and 5xx/429; a bad key fails at once. requests.get
+    and time.sleep are mocked, so no network and no real waiting."""
+
+    class _Resp:
+        def __init__(self, status=200, payload=None):
+            self.status_code = status
+            self._payload = payload if payload is not None else []
+
+        def raise_for_status(self):
+            import requests
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"{self.status_code}", response=self)
+
+        def json(self):
+            return self._payload
+
+    def _install(self, monkeypatch, outcomes):
+        import requests
+        monkeypatch.setenv("CFBDAPIKEY", "test-key")
+        calls, sleeps = [], []
+
+        def fake_get(url, **kw):
+            calls.append(kw)
+            out = outcomes[len(calls) - 1]
+            if isinstance(out, Exception):
+                raise out
+            return out
+
+        monkeypatch.setattr(requests, "get", fake_get)
+        monkeypatch.setattr(cfb.time, "sleep", sleeps.append)
+        return calls, sleeps
+
+    def test_two_timeouts_then_success_returns_the_data(self, monkeypatch, capsys):
+        import requests
+        calls, sleeps = self._install(monkeypatch, [
+            requests.ReadTimeout("slow"), requests.ConnectionError("reset"),
+            self._Resp(200, [{"ok": 1}])])
+        assert cfb._cfbd_get("teams/fbs", year=2026) == [{"ok": 1}]
+        assert len(calls) == 3
+        assert sleeps == [5, 15]
+        assert all(c["timeout"] == (10, 60) for c in calls)
+        out = capsys.readouterr().out
+        assert "[cfbd] /teams/fbs attempt 1 failed" in out
+        assert "retrying in 5s" in out and "retrying in 15s" in out
+
+    def test_three_timeouts_raises_the_last_one(self, monkeypatch):
+        import requests
+        calls, sleeps = self._install(monkeypatch, [
+            requests.ReadTimeout("a"), requests.ReadTimeout("b"),
+            requests.ReadTimeout("c")])
+        with pytest.raises(requests.ReadTimeout, match="c"):
+            cfb._cfbd_get("calendar", year=2026)
+        assert len(calls) == 3 and sleeps == [5, 15]
+
+    def test_401_raises_immediately_without_retrying(self, monkeypatch):
+        import requests
+        calls, sleeps = self._install(monkeypatch, [self._Resp(401)])
+        with pytest.raises(requests.HTTPError):
+            cfb._cfbd_get("calendar", year=2026)
+        assert len(calls) == 1 and sleeps == []
+
+    def test_503_then_success_returns_the_data(self, monkeypatch):
+        calls, sleeps = self._install(monkeypatch, [
+            self._Resp(503), self._Resp(200, [{"ok": 2}])])
+        assert cfb._cfbd_get("calendar", year=2026) == [{"ok": 2}]
+        assert len(calls) == 2 and sleeps == [5]

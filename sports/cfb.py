@@ -45,6 +45,7 @@ import json
 import os
 import statistics
 import sys
+import time
 from datetime import date, datetime, timedelta, timezone
 from typing import Iterable, Optional
 from zoneinfo import ZoneInfo
@@ -818,16 +819,40 @@ def _odds_api_get(path: str, **extra) -> list:
     return resp.json()
 
 
+# CFBD stalls intermittently; one read timeout must not abort the whole tick.
+# Seconds to wait BEFORE attempts 1, 2 and 3. (The Odds API getter is
+# deliberately not retried: a timed-out request may still be charged credits.)
+_CFBD_RETRY_WAITS = (0, 5, 15)
+_CFBD_RETRY_STATUS = frozenset({429, 500, 502, 503, 504})
+
+
 def _cfbd_get(path: str, **params) -> list:
     import requests
     key = os.environ.get("CFBDAPIKEY")
     if not key:
         raise RuntimeError("CFBDAPIKEY must be set in the environment.")
-    resp = requests.get(f"{_CFBD_BASE}/{path}", params=params,
-                        headers={"Authorization": f"Bearer {key}",
-                                 "Accept": "application/json"}, timeout=30)
-    resp.raise_for_status()
-    return resp.json()
+    last_exc: Exception
+    for n, wait in enumerate(_CFBD_RETRY_WAITS, start=1):
+        if wait:
+            time.sleep(wait)
+        try:
+            resp = requests.get(f"{_CFBD_BASE}/{path}", params=params,
+                                headers={"Authorization": f"Bearer {key}",
+                                         "Accept": "application/json"},
+                                timeout=(10, 60))
+        except (requests.ConnectionError, requests.Timeout) as exc:
+            last_exc = exc
+        else:
+            if resp.status_code not in _CFBD_RETRY_STATUS:
+                # Other 4xx (401/403 = bad key) are not retried: raised here.
+                resp.raise_for_status()
+                return resp.json()
+            last_exc = requests.HTTPError(
+                f"{resp.status_code} from CFBD", response=resp)
+        if n < len(_CFBD_RETRY_WAITS):
+            print(f"[cfbd] /{path} attempt {n} failed: {last_exc!r}; "
+                  f"retrying in {_CFBD_RETRY_WAITS[n]}s")
+    raise last_exc
 
 
 def _dig(row: dict, *path):
