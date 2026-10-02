@@ -512,6 +512,13 @@ def team_stats_view(stat_rows) -> dict:
 
 # --- candidate construction (pure, unit-tested) ------------------------------
 
+def _skip(game, why: str):
+    """A due game that is not a candidate. Logged so a missing game always has a reason."""
+    print(f"[cfb] SKIP {game.away} @ {game.home} "
+          f"({game.commence_time:%Y-%m-%d %H:%M} UTC): {why}")
+    return None
+
+
 def build_candidate(game: Game, snapshots: list, team_stats: dict, *,
                     fbs: set, game_week: int,
                     now: Optional[datetime] = None) -> Optional[Candidate]:
@@ -526,7 +533,7 @@ def build_candidate(game: Game, snapshots: list, team_stats: dict, *,
     "name did not resolve" — that raises UnmappedTeamError.
     """
     if not snapshots:
-        return None
+        return _skip(game, "no snapshots")
 
     # Universe: FBS vs FBS. Unresolvable names are announced (never dropped
     # quietly) and the game is skipped — see note_unresolved for why this is a
@@ -534,11 +541,11 @@ def build_candidate(game: Game, snapshots: list, team_stats: dict, *,
     for team in (game.home, game.away):
         if team not in crosswalk()["conference"]:
             note_unresolved(team, "not in the NCAAF crosswalk (exact match only)")
-            return None
+            return _skip(game, f"unresolved team name {team}")
     if game.home not in fbs or game.away not in fbs:
-        return None
+        return _skip(game, "not FBS vs FBS")
     if game_week < ALERT_FROM_WEEK:
-        return None
+        return _skip(game, f"week {game_week} before alert week")
 
     # The loaded stats must predate this game. Checked here, on the rows that
     # will actually feed the vetoes, rather than only on the arithmetic.
@@ -556,29 +563,30 @@ def build_candidate(game: Game, snapshots: list, team_stats: dict, *,
                     if s.taken_at == first and s.book in NON_PROPHETX_BOOKS
                     and s.home_point is not None]
     if not first_points:
-        return None
+        return _skip(game, "no opening spreads from non-ProphetX books")
     consensus_home = statistics.median(first_points)
     if consensus_home < 0:
         favorite, dog = game.home, game.away
     elif consensus_home > 0:
         favorite, dog = game.away, game.home
     else:
-        return None  # pick'em, no favorite
+        return _skip(game, "opened as a pick'em")
 
     px = next((s for s in snapshots if s.taken_at == last and s.book == PROPHETX),
               None)
     if px is None:
-        return None
+        return _skip(game, "no ProphetX row at this tick")
     if favorite == game.home:
         entry_ml, liquidity = px.home_ml, px.home_limit
     else:
         entry_ml, liquidity = px.away_ml, px.away_limit
     if entry_ml is None:
-        return None
+        return _skip(game, f"no ProphetX moneyline on opening favorite {favorite}")
 
     lo, hi = PRICE_BAND
     if not (lo <= entry_ml <= hi):
-        return None
+        return _skip(game, f"ProphetX ML {entry_ml} on opening favorite {favorite} outside "
+                          f"{lo}..{hi} (opening home spread {consensus_home})")
 
     return Candidate(
         sport="cfb", game=game, favorite=favorite, dog=dog,
